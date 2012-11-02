@@ -13,6 +13,12 @@ namespace om636
 
 	template<class T, class U> U traverse_combinations(T &, U);
 	template<class T, class U> U traverse_combinations(const T &, U);
+    
+    template<class T, class U> U traverse_combinations_if(T &, U);
+	template<class T, class U> U traverse_combinations_if(const T &, U);
+    
+    template<class T, class U> U reduce(T &, U);
+    template<class T, class U> U reduce(const T &, U);
 }
 
 #include "traverse.hxx"
