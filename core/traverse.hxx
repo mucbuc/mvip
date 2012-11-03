@@ -153,57 +153,52 @@ namespace om636
             static U apply_if( const T & t, U visitor )
             {   return visitor; }
         };
-
+        
         /////////////////////////////////////////////////////////////////////////////////////////////
-        // reduce_impl< N, M >
+        // reduce_impl< N, M, R >
         /////////////////////////////////////////////////////////////////////////////////////////////
-        template<int N, int M>
+        template<int N, int M, class R>
         struct reduce_impl
         {
             template<class T, class U>
-            static U apply( T & t, U visitor )
+            static std::tuple<R, U> apply( T & t, U visitor )
             {
-                visitor( std::get<N>(t) );
-                return reduce_impl<N+1, M>::apply( t, visitor );
+                using namespace std;
+                
+                const tuple<R, U> & recursion( reduce_impl<N+1, M, R>::apply( t, visitor ) );
+                visitor = get<1>(recursion);
+                const R & result_value( visitor( get<N-2>(t), get<0>(recursion) ) );
+                return make_tuple( result_value, visitor );
             }
         };
         
         /////////////////////////////////////////////////////////////////////////////////////////////
-        // reduce_impl< N, N >
+        // reduce_impl< N, N, R >
         /////////////////////////////////////////////////////////////////////////////////////////////
-        template<int N>
-        struct reduce_impl<N, N>
+        template<int N, class R>
+        struct reduce_impl<N, N, R>
         {
             template<class T, class U>
-            static U apply( T & t, U visitor )
-            {   return visitor; }
-        };
-        
-        /////////////////////////////////////////////////////////////////////////////////////////////
-        // reduce_impl< 0, N >
-        /////////////////////////////////////////////////////////////////////////////////////////////
-        template<int N>
-        struct reduce_impl<0, N>
-        {
-            template<class T, class U>
-            static U apply( T & t, U visitor )
+            static std::tuple<R, U> apply( T & t, U visitor )
             {
-                visitor( std::get<0>(t), std::get<1>(t) );
-                return reduce_impl<2, N>::apply( t, visitor );
+                using namespace std;
+                const R & value( visitor( get<N - 2>(t), get<N - 1>(t) ) );
+                return make_tuple( value, visitor );
             }
         };
-        
+
         /////////////////////////////////////////////////////////////////////////////////////////////
-        // reduce_impl< 0, 1 >
+        // reduce_impl< 0, 1, R >
         /////////////////////////////////////////////////////////////////////////////////////////////
-        template<>
-        struct reduce_impl<0, 1>
+        template<class R>
+        struct reduce_impl<2, 1, R>
         {
             template<class T, class U>
-            static U apply( T & t, U visitor )
+            static std::tuple<R, U> apply( T & t, U visitor )
             {
-                visitor( std::get<0>(t) );
-                return visitor;
+                using namespace std;
+                const R & value( visitor( std::get<0>(t) ) );
+                return std::make_tuple( value, visitor );
             }
         };
     }
@@ -247,6 +242,7 @@ namespace om636
     U traverse_combinations_if(const T & t, U visitor)
     {   return traverse_combinations_impl< 0, 1, std::tuple_size<T>::value >::apply_if( t, visitor ); }
     
+#if 0
     /////////////////////////////////////////////////////////////////////////////////////////////
     template<class T, class U>
     U reduce(T & t, U visitor)
@@ -256,5 +252,14 @@ namespace om636
     template<class T, class U>
     U reduce(const T & t, U visitor)
     {   return reduce_impl< 0, std::tuple_size<T>::value >::apply( t, visitor ); }
+#else 
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    template<class T, class U, class V> std::tuple<T, V> reduce(U & t, V visitor)
+    {   return reduce_impl< 2, std::tuple_size<U>::value, T >::apply( t, visitor );    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    template<class T, class U, class V> std::tuple<T, V> reduce(const U & t, V visitor)
+    {   return reduce_impl< 2, std::tuple_size<U>::value, T >::apply( t, visitor );    }
+#endif
     
 } // om636
