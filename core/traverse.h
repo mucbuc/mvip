@@ -10,16 +10,16 @@ dependancies:
     - std::tuple
 
 usage: 
- 	- the last argument is allways the functor handling the elements
- 	- the tuples can be passed by left reference, right reference or const reference
-	- all '_if' versions cancel traversal if the functor returns false
-	- traverse( tuple< a, b, c >(), f ); 							==> f( a ); f( b ); b( c );
-	- traverse_combinations( tuple< a, b, c >(), f ); 				==> f( a, b ); f( a, c ); f( b, c );
-	- reduce( tuple< a, b, c >(), f ); 								==> f( f( a, b ), c );
-    - traverse_parallel( tuple< a, b, c >(), tuple< d, e >, f ); 	==> f( a, d ); f( b, e );
+    - the last argument is allways the functor handling the elements
+    - the tuples can be passed by left reference, right reference or const reference
+    - all '_if' versions cancel traversal if the functor returns false
+    - traverse( tuple< a, b, c >(), f );                             ==> f( a ); f( b ); b( c );
+    - traverse_combinations( tuple< a, b, c >(), f );                 ==> f( a, b ); f( a, c ); f( b, c );
+    - reduce( tuple< a, b, c >(), f );                                 ==> f( f( a, b ), c );
+    - traverse_parallel( tuple< a, b, c >(), tuple< d, e >, f );     ==> f( a, d ); f( b, e );
 
 todo:
- 	- traverse_adjacent( tuple< a, b, c >(), f ) 					==> f( a, b ), f( b, c );
+     - traverse_adjacent( tuple< a, b, c >(), f )                     ==> f( a, b ), f( b, c );
 */
 
 #ifndef TRAVERSE_H__emhAd95QCGblkZVTxDygf3upPMocRq
@@ -31,21 +31,21 @@ namespace om636
 {
     
 //  unary
-	template<class T, class U> U traverse(T &, U);
+    template<class T, class U> U traverse(T &, U);
     template<class T, class U> U traverse(T &&, U);
     template<class T, class U> U traverse(const T &, U);
     
     template<class T, class U> U traverse_if(T &, U);
-	template<class T, class U> U traverse_if(T &&, U);
-	template<class T, class U> U traverse_if(const T &, U);
+    template<class T, class U> U traverse_if(T &&, U);
+    template<class T, class U> U traverse_if(const T &, U);
 
-	template<class T, class U> U traverse_combinations(T &, U);
-	template<class T, class U> U traverse_combinations(T &&, U);
+    template<class T, class U> U traverse_combinations(T &, U);
+    template<class T, class U> U traverse_combinations(T &&, U);
     template<class T, class U> U traverse_combinations(const T &, U);
     
     template<class T, class U> U traverse_combinations_if(T &, U);
-	template<class T, class U> U traverse_combinations_if(T &&, U);
-	template<class T, class U> U traverse_combinations_if(const T &, U);
+    template<class T, class U> U traverse_combinations_if(T &&, U);
+    template<class T, class U> U traverse_combinations_if(const T &, U);
     
     template<class T, class U, class V> std::tuple<T, V> reduce(U &, V);
     template<class T, class U, class V> std::tuple<T, V> reduce(U &&, V);
@@ -150,7 +150,6 @@ namespace om636
     
     namespace Private
     {
-        
         // traverse_impl
         template<int, int, class>
         struct traverse_impl;
