@@ -1,3 +1,3 @@
 c++ metaprogramming tools
 
-traversal.h: traversal algorithms for std::tuple 
+core/traversal.h: traversal algorithms for std::tuple 
