@@ -2,7 +2,7 @@
 om636
 Copyright (c) 2013 by Mark Busenitz
 www.github.com/mucbuc
-	
+    
 objective:
     - state owner
     - subject policy host
@@ -40,37 +40,37 @@ namespace om636
     class context
     : public U< context< T, U > >
     {
-		template<class, template<class> class> friend class context;
+        template<class, template<class> class> friend class context;
         
     public:
-		
-		// types
+        
+        // types
         typedef U< context< T, U > > subject_policy;
         typedef typename subject_policy::value_type value_type;
         
-		// resources
+        // resources
         context();
-		context(const context &);
+        context(const context &);
         
-		template<class W> context( const W & );
+        template<class W> context( const W & );
         template<class W, class X> context( const W &, const X & );
         virtual ~context() = default;
         context & operator=(context);
-		template<class W> context & operator=(W);
-		void swap(context &);
-		
-		// access
-		typename std::add_lvalue_reference< value_type >::type value_ref();
-		typename std::add_lvalue_reference< typename std::add_const< value_type >::type >::type value_ref() const;
+        template<class W> context & operator=(W);
+        void swap(context &);
+        
+        // access
+        typename std::add_lvalue_reference< value_type >::type value_ref();
+        typename std::add_lvalue_reference< typename std::add_const< value_type >::type >::type value_ref() const;
  
-		subject_policy & subject_ref();
-		const subject_policy & subject_ref() const;
-	
-		template<class I>
-		typename I::template traits<context>::result_type operator[](I);
+        subject_policy & subject_ref();
+        const subject_policy & subject_ref() const;
+    
+        template<class I>
+        typename I::template traits<context>::result_type operator[](I);
 
-		template<class I>
-		typename I::template traits<const context>::result_type operator[](I) const;
+        template<class I>
+        typename I::template traits<const context>::result_type operator[](I) const;
 
         // conversion
         template<class W> W to_value() const;
@@ -120,23 +120,23 @@ namespace om636
         bool operator<=(context) const;
         bool operator<(context) const;
 
-	private:
+    private:
         
         value_type m_internal_context_state;
-	};
-	
+    };
+    
 // non members
-	template<class T, template<class> class U>
-	void swap(context<T, U> &, context<T, U> &);
+    template<class T, template<class> class U>
+    void swap(context<T, U> &, context<T, U> &);
     
-	template<class T, template<class> class U>
-	int sign(const context<T, U> &);
+    template<class T, template<class> class U>
+    int sign(const context<T, U> &);
     
-	template<class T, class U, template<class> class V>
-	T & operator<<(T & s, const context<U, V> &);
+    template<class T, class U, template<class> class V>
+    T & operator<<(T & s, const context<U, V> &);
     
-	template<class T, class U, template<class> class V>
-	T & operator>>(T & s, context<U, V> &);
+    template<class T, class U, template<class> class V>
+    T & operator>>(T & s, context<U, V> &);
 
     namespace default_subject
     {
@@ -186,7 +186,7 @@ namespace om636
         };
     }
 
-}	// om636
+}    // om636
 
 #include "context.hxx"
 
