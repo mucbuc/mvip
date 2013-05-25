@@ -25,9 +25,9 @@ usage:
         ==> f( f( a, b ), c );
  
     binary:
-    - traverse::parallel( tuple< a, b, c >(), tuple< d, e >, f );
+    - traverse::parallel( tuple< a, b, c >(), tuple< d, e >(), f );
         ==> f( a, d ); f( b, e );
-    - traverse::combinations( tuple< a, b, c >(), tuple< d, e >, f );
+    - traverse::combinations( tuple< a, b, c >(), tuple< d, e >(), f );
         ==> f( a, d ); f( a, e ); f( b, d ); f( b, e ); f( c, d ); f( c, e );
  
 todo: 
