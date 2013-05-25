@@ -10,9 +10,9 @@ dependancies:
     - std::tuple
 
 usage: 
-    - the last argument is allways the functor handling the elements
+    - the last argument is the functor handling the elements
     - the tuples can be passed by left reference, right reference or const reference
-    - all '_if' versions cancel traversal if the functor returns false
+    - '_if' versions cancel traversal if the functor returns false
     
     unary:
     - traverse::elements( tuple< a, b, c >(), f );
