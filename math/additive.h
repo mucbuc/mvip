@@ -73,9 +73,6 @@ evaluation_policy:      <== non sense, this is what additive/multiplicative is i
 #define _additive_H_8900700
 
 #include <om636/components/context.h>
-#include <om636/components/observer.h>
-#include <om636/components/range.h>
-#include <om636/core/typeutills.h>
 #include <om636/create/singleton.h>
 #include <om636/math/mathfunctors.h>
 #include <om636/math/mathutills.h>
@@ -92,7 +89,7 @@ namespace om636
         {
             typedef T context_type;
             typedef math::observer<context_type> observer_type;
-            typedef typename tuple_append< typename default_subject::traits<context_type>::value_type, observer_type * >::type value_type;
+            typedef decltype( std::tuple_cat( typename default_subject::traits<context_type>::value_type(), std::tuple< observer_type * >(0) ) ) value_type;
             typedef typename std::tuple_element<0, value_type>::type positive_type;
             typedef typename std::tuple_element<1, value_type>::type negative_type;
             

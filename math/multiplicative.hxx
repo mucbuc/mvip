@@ -6,11 +6,11 @@ namespace om636
         // not_factored
         template<class T>
         struct not_factored_state
-        : public value_observer< typename T::policy_type >
+        : public math::value_observer< typename T::policy_type >
         {
             // types
             typedef T context_type;
-            typedef value_observer< typename T::policy_type > subject_policy;
+            typedef math::value_observer< typename T::policy_type > subject_policy;
             
             using subject_policy::evaluate;
             using subject_policy::num_ref;
@@ -37,11 +37,11 @@ namespace om636
         // m_unit
         template<class T>
         struct unit_state
-        : public value_observer< typename T::policy_type >
+        : public math::value_observer< typename T::policy_type >
         {
             // types
             typedef T context_type;
-            typedef value_observer< typename T::policy_type > subject_policy;
+            typedef math::value_observer< typename T::policy_type > subject_policy;
             
             using subject_policy::not_factored;
             using subject_policy::evaluate;
@@ -68,11 +68,11 @@ namespace om636
         // factored
         template<class T>
         struct factored_state
-        : public value_observer< typename T::policy_type >
+        : public math::value_observer< typename T::policy_type >
         {
             // types
             typedef T context_type;
-            typedef value_observer< typename T::policy_type > subject_policy;
+            typedef math::value_observer< typename T::policy_type > subject_policy;
             
             using subject_policy::not_factored;
             using subject_policy::num_ref;

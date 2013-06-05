@@ -6,11 +6,11 @@ namespace om636
         // unknown_state
         template<class T>
         struct unknown_state
-        : public value_observer< typename T::policy_type >
+        : public math::value_observer< typename T::policy_type >
         {
             // types
             typedef T context_type;
-            typedef value_observer< typename T::policy_type > subject_policy;
+            typedef math::value_observer< typename T::policy_type > subject_policy;
             using subject_policy::unknown;
             using subject_policy::zero;
             using subject_policy::negative;
@@ -38,11 +38,11 @@ namespace om636
         // zero_state
         template<class T>
         struct zero_state
-        : public value_observer< typename T::policy_type >
+        : public math::value_observer< typename T::policy_type >
         {
             // types
             typedef T context_type;
-            typedef value_observer< typename T::policy_type > subject_policy;
+            typedef math::value_observer< typename T::policy_type > subject_policy;
             using subject_policy::unknown;
             using subject_policy::zero;
             using subject_policy::positive;
@@ -72,11 +72,11 @@ namespace om636
         // positive_state
         template<class T>
         struct positive_state
-        : public value_observer< typename T::policy_type >
+        : public math::value_observer< typename T::policy_type >
         {
             // types
             typedef T context_type;
-            typedef value_observer< typename T::policy_type > subject_policy;
+            typedef math::value_observer< typename T::policy_type > subject_policy;
             using subject_policy::unknown;
             using subject_policy::zero;
             using subject_policy::negative;
@@ -104,11 +104,11 @@ namespace om636
         // negative_state
         template<class T>
         struct negative_state
-        : public value_observer< typename T::policy_type >
+        : public math::value_observer< typename T::policy_type >
         {
             // types
             typedef T context_type;
-            typedef value_observer< typename T::policy_type > subject_policy;
+            typedef math::value_observer< typename T::policy_type > subject_policy;
             using subject_policy::unknown;
             using subject_policy::zero;
             using subject_policy::positive;

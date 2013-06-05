@@ -1,3 +1,14 @@
+/*
+om636
+Copyright (c) 2013 by Mark Busenitz
+www.github.com/mucbuc
+
+objective: 
+    - define abstract interface
+    - 
+ 
+*/
+
 #ifndef OBSERVER_H__cIuO6MV2doHZDmg8ijr17zB0YCelG3
 #define OBSERVER_H__cIuO6MV2doHZDmg8ijr17zB0YCelG3
 
@@ -16,20 +27,7 @@ namespace om636
         virtual void on_swap(const context_type &, const context_type &) = 0;
         virtual void detach(void *) = 0;
 	}; 
-	    
-    template<class T>
-    struct value_observer
-    : public T
-    {
-        // types
-        typedef T base_type;
-        typedef typename base_type::context_type context_type;
-        
-        virtual ~value_observer();
-        virtual bool on_swap(context_type &, context_type &) const;
-    };
-	    
-	    
+
 }	// om636
 
 #include "observer.hxx"

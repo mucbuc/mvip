@@ -1,4 +1,4 @@
-#ifndef _type_utills_H_8900700
+#ifdef _type_utills_H_8900700
 	#define _type_utills_H_8900700
 
 #include <om636/core/corefwd.h>
