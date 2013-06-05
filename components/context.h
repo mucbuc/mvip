@@ -14,9 +14,29 @@ dependancies:
     - std::tuple
     - om636/core/traverse
  
-usage:
-    for now see om636/components/context_test.h
+ usage:
  
+     I/O:
+     -   default whitespace seperator:
+     
+         stringstream s;
+         s << "A B C";
+         
+         tuple< a, b, c > t;
+         s >> t;
+     
+     -   comma seperator:
+ 
+         stringstream s;
+         s << "A, B, C,";
+         
+         tuple< a, b, c > t;
+         s >> t.sep( ',' );
+         
+         cout << t.sep( ',' );   // ==> A, B, C
+ 
+ note:
+ - subject's that write to file could cause an exception in which the value probably shouldn't change
 */
 
 #ifndef CONTEXT_H__INCLUDE_GUARD__45435435
