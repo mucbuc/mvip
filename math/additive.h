@@ -74,8 +74,6 @@ evaluation_policy:      <== non sense, this is what additive/multiplicative is i
 
 #include <om636/components/context.h>
 #include <om636/create/singleton.h>
-//#include <om636/math/mathfunctors.h>
-#include <om636/math/mathutills.h>
 #include <om636/math/observer.h>
 #include <tuple>
 

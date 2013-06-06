@@ -134,7 +134,7 @@ namespace om636
             return & singleton<state_type, default_lifetime<state_type>, create_new<state_type> >::instance();
         }
         
-#pragma mark - unknown_state
+        #pragma mark - unknown_state
         
         /////////////////////////////////////////////////////////////////////////////////////////////
         // unknown_state
