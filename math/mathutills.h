@@ -13,24 +13,6 @@ namespace om636
 {
     static const double phi( 3.1419999 );
     
-    template<class T>
-    int sign(const T &);
-    
-    template<class T>
-    int cmp(const T &, const T &);
-
-    template<class T, class U>
-    int cmp(const T &, const U &);
-
-    template<class T>
-    T gcd( const T &, const T &);
-
-    template<class T>
-    T euclidian(T, T);
-
-    template<class T, class O>
-    std::pair<T, O> euclidian(T, T, O);
-
     template<class I, class O>
     O convergent( I, I, O);
 
