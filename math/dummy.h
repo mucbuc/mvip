@@ -5,7 +5,7 @@
 #include <om636/core/core.h>
 #include <om636/components/context.h>
 #include <om636/math/mathfwd.h>
-#include <om636/math/mathutills.h>
+#include <om636/math/utills.h>
 
 namespace om636
 {

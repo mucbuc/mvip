@@ -27,4 +27,4 @@ namespace om636
     template<class, template<class> class> class lambda;
 }
 
-#endif // __LAMBDA_FWD_H__GzE18nvZyhQmq7oVL5NHJ63bdIucK0
+#endif // LAMBDA_FWD_H__GzE18nvZyhQmq7oVL5NHJ63bdIucK0
