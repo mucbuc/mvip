@@ -15,10 +15,9 @@
 		destructor
 */
 
-#ifndef _singleton_H_8900700
-#define _singleton_H_8900700
+#ifndef SINGLETON_H_8900700
+#define SINGLETON_H_8900700
 
-#include <om636/components/componentsfwd.h>
 #include <cstdlib>
 
 namespace om636
@@ -74,4 +73,4 @@ namespace om636
 
 #include "singleton.hxx"
 
-#endif // _singleton_H_8900700
+#endif // SINGLETON_H_8900700
