@@ -16,7 +16,7 @@ namespace om636
         typedef typename storage_type::iterator iterator; 
         
         persistent_raw( const persistent_raw & ) = delete;
-        persistent_raw & operator=(persistent_raw) = delte;
+        persistent_raw & operator=(persistent_raw) = delete;
      
         const storage_type & storage() const;
         storage_type & storage();
