@@ -4,8 +4,8 @@ Copyright (c) 2013 by Mark Busenitz
 www.github.com/mucbuc
 */
 
-#ifndef _additive_H_8900700
-#define _additive_H_8900700
+#ifndef additive_H_8900700
+#define additive_H_8900700
 
 #include <om636/components/context.h>
 #include <om636/create/singleton.h>
@@ -193,4 +193,4 @@ namespace om636
         
 #include "additive.hxx"
 
-#endif // _additive_H_8900700	
+#endif // additive_H_8900700	
