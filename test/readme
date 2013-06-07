@@ -1,0 +1,18 @@
+c++ test framework built on node.js
+
+add test: make directory with main.cpp inside
+
+init(BUILD_CONFIGURATION): 
+test$ git checkout config.git
+test$ cd config
+test/config$ git checkout BUILD_CONFIGURATION
+
+usage:
+test$ node test 
+
+BUILD_CONFIGURATIONs:
+gcc
+clang
+
+
+

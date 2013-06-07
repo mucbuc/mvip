@@ -3,7 +3,6 @@
 #include <om636/components/context.h>
 #include <om636/components/observer.h>
 #include <om636/components/subject.h>
-#include <om636/math/dummy.h>
 
 #include <string>
 

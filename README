@@ -1,3 +1,12 @@
+<<<<<<< HEAD
 c++ metaprogramming tools
 
 core/traversal.h: traversal algorithms for std::tuple 
+=======
+c++ metaprogramming, design patterns, tools 
+
+test: c++ test framework built on node.js
+components: behavioral design pattern components
+create: creational design pattern components
+core: utilities 
+>>>>>>> e49bada160c962f7026bf5fb03fe3145173702df
