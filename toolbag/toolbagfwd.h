@@ -12,7 +12,7 @@ namespace om636
 	typedef const scope_guard_base & scope_guard;
   
     template<class T> 
-    class persistant;
+    class persistent;
     
 } 	// om636
 

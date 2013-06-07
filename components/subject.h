@@ -12,7 +12,8 @@
 
 #include <om636/components/observer.h>
 #include <om636/components/context.h>
-#include <om636/toolbag/persistant.h>
+#include <om636/core/persistent.h>
+#include <om636/create/singleton.h>
 
 #include <vector> 
 #include <map>
@@ -98,7 +99,7 @@ namespace om636
         
     private:
         
-        typedef om636::persistant< std::map< std::string, std::string > > persistent_type;
+        typedef om636::persistent< std::map< std::string, std::string > > persistent_type;
         typedef singleton< persistent_type, default_lifetime< persistent_type >, create_new< persistent_type > > singleton_type;
         
         std::string m_name;

@@ -129,7 +129,7 @@ namespace om636
     : base_type()
     , m_name()
     {
-        singleton_type::instance().open( "persistant_storage.dat" ); 
+        singleton_type::instance().open( "persistent_storage.dat" ); 
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////
