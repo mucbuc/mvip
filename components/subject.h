@@ -1,9 +1,9 @@
 /* 
-	possible policies: 
-		update while update: block, wait, stack... 
-		detachment: invalidate, remove, remove on update result... 
-		attachment: update on attach during update, 
+om636
+Copyright (c) 2013 by Mark Busenitz
+www.github.com/mucbuc
 
+collection of subject policies
 
 */ 
 
@@ -136,101 +136,7 @@ namespace om636
         virtual void on_dec(context_type &) const;
         virtual void on_invert(context_type &) const;
     };
-    
-#if 0
-    // abstract interface
-	template<class T>
-    struct subject
-	{
-		typedef T context_type;
-        typedef observer< context_type > * observer_type;
-        
-		virtual ~subject();
-		virtual void attach( const observer_type & ) = 0;
-		virtual void detach( const observer_type & ) = 0;
-        
-        // note: no update while update due to const context &
-        // con: this is too specific, what about a design where observer
-        // 	 	returns a bool if intererested in further updates (to avoid finds)?
-        //
-        virtual void on_swap( context_type &, context_type & ) = 0;
-    };
-    
-    template<class T, class U>
-    struct default_policy
-    {
-        typedef T value_type;   // <= this gets passed up to host
-        typedef U context_type;
-        typedef observer< context_type > * observer_type;
-        
-        static void on_attach(context_type & c, const observer_type & o)
-        {
-            observers( c ).push_back(o);
-        }
-		static void on_detach(context_type & c, const observer_type & o)
-        {
-            observers( c ).erase( ... );
-        }
-        static void on_swap(context_type &, context_type &)
-        {
-            observers( c ).traverse( ... );
-        }
-    };
-    
-    template<class T>
-    struct subject_traits
-    {
-        typedef T context_type;
-        typedef observer< context_type > * observer_type;
-        static observer_type * & state(context_type &);
-        static observer_type * state(const context_type &);
-    };
-
-    template<class T>
-    abstract_policy
-    {
-        typedef T context_type;
-        typedef observer< context_type > * observer_type;
-        
-        virtual void on_swap(context_type &, context_type &) = 0;
-        virtual void on_attach(context_type &, const observer_type &) = 0;
-        virtual void on_detach(context_type &, const observer_type &) = 0;
-    };
-    
-    template<class T, class U>
-    struct state_policy
-    : subject_traits< U > 
-    {
-        typedef typename tuple_append< T, abstract_policy * >::type value_type;   // <= this gets passed up to host
-        typedef U context_type;
-        typedef observer< context_type > * observer_type;
-        
-        static void on_attach(context_type & c, const observer_type & o)
-        {
-            state( c )->on_attach( c, o );
-        }
-		
-        static void on_detach(context_type & c, const observer_type & o)
-        {
-            state( c )->on_detach( c, o );
-        }
-        
-        static void on_swap(context_type & l, context_type & l)
-        {
-            // note: the actual call to the observer must use ( std::get<0>(l), std::get<0>(r) )
-            state( c )->on_swap( l, r );
-        }
-    };
-
-    /*
-     the nice thing about this design is that a state pointer inside of
-     context can be set to differenet handlers. base this on the number 
-     model.
-     */
-    
-#endif
-    
 }	// om636
 
 #include "subject.hxx"
-#endif // __SUBJECT_H__3OinTKlusSf57wk9G41geIdYXzUEVv
+#endif // SUBJECT_H__3OinTKlusSf57wk9G41geIdYXzUEVv
