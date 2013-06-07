@@ -181,15 +181,17 @@ namespace
 	{
 		typedef om636::context< int, T > context_type;
 		
+        const char * path( "persistent_storage.dat" );
+        
 		if (1)
 		{
-			context_type a( std::string("test_persistence_var") );
+			context_type a( std::string("test_persistence_var"), path );
 			a = 1230;
 		}
 		
 		if (1)
 		{
-			context_type a( std::string("test_persistence_var") );
+			context_type a( std::string("test_persistence_var"), path );
 			
 			ASSERT( a.value_ref() == 1230 );
 		
@@ -198,7 +200,7 @@ namespace
 	
 		if (1)
 		{
-			context_type a( std::string("test_persistence_var") );
+			context_type a( std::string("test_persistence_var"), path );
 		
 			ASSERT( a.value_ref() == 1239 );
 		}
