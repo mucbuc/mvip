@@ -11,7 +11,6 @@ namespace om636
 		}
 		
   		template<class T>
-        template<class U>
 		void tester<T>::test_comparisons()
 		{
 			T a(0), b(0), c(1), d(-1);
