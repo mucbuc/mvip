@@ -49,7 +49,7 @@ namespace om636
     {
         using namespace om636;
         using namespace std;
-        typedef context< tuple< int >, context_test_policy > context_type;
+        typedef context< int, context_test_policy > context_type;
         
         // check default constructor
         context_type a;
