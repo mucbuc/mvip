@@ -5,7 +5,6 @@ namespace om636
 {
     namespace tools 
     {
-    
         template<class T>
         struct tester
         {
@@ -138,9 +137,7 @@ namespace om636
                 om636::tools::tester<T>::template test_conversions<float>();
             }
         };
-        
-        
-        
+
     }   // tools
 }   // om636
 
