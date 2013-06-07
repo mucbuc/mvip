@@ -20,7 +20,7 @@ namespace
     using multiplicative_type = om636::state_subject< om636::multiplicative::policy< T > >;
 
 	template<class T>
-	void run_test()
+	void run_math_test()
 	{
 		using namespace std;
 		using namespace om636;
