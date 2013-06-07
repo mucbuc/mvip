@@ -1,7 +1,14 @@
-#include <iostream>
+#include <cassert>
+#define ASSERT( pred ) assert( pred )
 
-int main( int argc, char * argv[] )
+#include "context_test.h"
+
+int main(int argc, const char * argv[])
 {
-  std::cout << "hello" << std::endl;
-  return 0; 
+    using namespace std;
+    using namespace om636;
+
+    run_context_test();
+	
+	return 0;
 }
