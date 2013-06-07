@@ -5,6 +5,7 @@ core/traversal.h: traversal algorithms for std::tuple
 =======
 c++ metaprogramming, design patterns, tools 
 
+math: number system augmentation
 test: c++ test framework built on node.js
 components: behavioral design pattern components
 create: creational design pattern components
