@@ -1,9 +1,9 @@
 #ifndef CORE_H__INCLUDE_GUARD__LJDFD88989898989
 #define CORE_H__INCLUDE_GUARD__LJDFD88989898989
 
-#include <om636/core/corefwd.h>
-#include <om636/core/typetraits.h>
-#include <om636/core/typeutills.h>
+//#include <om636/core/corefwd.h>
+//#include <om636/core/typetraits.h>
+//#include <om636/core/typeutills.h>
 #include <algorithm>
 
 
