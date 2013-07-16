@@ -7,9 +7,9 @@ www.github.com/mucbuc
 #ifndef additive_H_8900700
 #define additive_H_8900700
 
-#include <om636/components/context.h>
-#include <om636/create/singleton.h>
-#include <om636/math/observer.h>
+#include <om636/lib/components/context.h>
+#include <om636/lib/create/singleton.h>
+#include <om636/lib/math/observer.h>
 #include <tuple>
 
 namespace om636

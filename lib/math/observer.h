@@ -56,6 +56,6 @@ namespace om636
 
 }	// om636
 
-#include <om636/math/observer.hxx>
+#include <om636/lib/math/observer.hxx>
 
 #endif // __OBSERVER_H__I0WfEMGNJgydS3rDPBO9CuwlVFqoiT

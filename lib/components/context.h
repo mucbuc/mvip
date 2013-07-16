@@ -22,7 +22,7 @@ usage:
 #ifndef CONTEXT_H__INCLUDE_GUARD__45435435
 #define CONTEXT_H__INCLUDE_GUARD__45435435
 
-#include <om636/core/traverse.h>
+#include <om636/lib/core/traverse.h>
 
 #include <tuple>
 #include <type_traits>
