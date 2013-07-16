@@ -11,10 +11,10 @@ objective:
 #ifndef SUBJECT_H__3OinTKlusSf57wk9G41geIdYXzUEVv
 #define SUBJECT_H__3OinTKlusSf57wk9G41geIdYXzUEVv
 
-#include <om636/components/observer.h>
-#include <om636/components/context.h>
-#include <om636/core/persistent.h>
-#include <om636/create/singleton.h>
+#include <om636/lib/components/observer.h>
+#include <om636/lib/components/context.h>
+#include <om636/lib/core/persistent.h>
+#include <om636/lib/create/singleton.h>
 
 #include <vector> 
 #include <map>
