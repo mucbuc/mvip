@@ -13,6 +13,9 @@ to_do:
     - test I/O operators
 */
 
+#ifndef _context_test_H_8975943875984375
+#define _context_test_H_8975943875984375
+
 #include <om636/components/context.h>
 
 namespace om636
@@ -64,7 +67,9 @@ namespace om636
         ASSERT( a.m_value == 7777 );
         
         // Done
-        cout << "run_context_test: passed" << std::endl;
+        cout << "run_context_test: passed" << endl;
     }
 
 }    // om636
+
+#endif // _context_test_H_8975943875984375

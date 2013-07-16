@@ -2,7 +2,7 @@
 #define BATCH_H__EL9ysUBcPGz4Jj6oYMRAne2Vx1iFNS
 
 #include <om636/lambda/lambda_fwd.h>
-#include <om636/containers/record.h>
+#include <om636/containers/pset.h>
 
 namespace om636
 {

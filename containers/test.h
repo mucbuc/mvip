@@ -1,5 +1,5 @@
 #include <om636/containers/queue.h>
-#include <om636/containers/record.h>
+#include <om636/containers/pset.h>
 #include <om636/containers/stack.h>
 
 #include <memory>
@@ -136,9 +136,9 @@ namespace om636
         }
     };
     
-    struct record_checker
+    struct pset_checker
     {
-        record_checker( bool & passed )
+        pset_checker( bool & passed )
         : m_passed( passed )
         , m_first( 1 )
         {}
@@ -156,12 +156,12 @@ namespace om636
     };
     
     template<class T>
-    void check_record()
+    void check_pset()
     {
         using namespace om636;
         using namespace std;
         
-        record< int, test_policy > r;
+        pset< int, test_policy > r;
         
         r.append( 0 );
         r.append( 1 );
@@ -174,11 +174,11 @@ namespace om636
         r.append( v.begin(), v.end() );
 
         bool passed( 0 ); 
-        r.traverse( record_checker( passed ) );
+        r.traverse( pset_checker( passed ) );
         
         ASSERT( passed );
     
-        std::cout << "check record passed" << std::endl;
+        std::cout << "check pset passed" << std::endl;
     }
 
 }   // om636

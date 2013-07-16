@@ -9,8 +9,8 @@
         could have fixed size blocks (common sizes or primes)  
 */
  
-#ifndef RECORD_H__DgtvNfi7AQK9OCEXTxWJrlqLS0k2pz
-#define RECORD_H__DgtvNfi7AQK9OCEXTxWJrlqLS0k2pz
+#ifndef PSET_H__DgtvNfi7AQK9OCEXTxWJrlqLS0k2pz
+#define PSET_H__DgtvNfi7AQK9OCEXTxWJrlqLS0k2pz
 
 
 #include <algorithm> 
@@ -22,27 +22,27 @@
 namespace om636
 {
     template<typename T>
-    struct default_record_policy
+    struct default_pset_policy
     {
         static void on_head_pass( const T & ) {}
     };
     
-	template<class T, template<class> class U = default_record_policy>
-	class record 
-	: public U< record< T, U > > 
+	template<class T, template<class> class U = default_pset_policy>
+	class pset 
+	: public U< pset< T, U > > 
 	{
         // feedback policy
-        typedef U< record< T, U > > fbp;
+        typedef U< pset< T, U > > fbp;
         
 		typedef std::function< void(const T &) > visitor_type; 
 		
 	public: 
 		typedef T value_type; 
 		
-		record() = default; 
-		~record() = default;
-		record( const record & ) = delete; 
-		record & operator=( const record & ) = delete; 
+		pset() = default; 
+		~pset() = default;
+		pset( const pset & ) = delete; 
+		pset & operator=( const pset & ) = delete; 
 		
 		void append( const value_type & ); 
 		
@@ -136,12 +136,12 @@ namespace om636
     // non members
     /////////////////////////////////////////////////////////////////////////////////////////////
     template<class S, class T, template<class> class U>
-    S & operator>>( S &, record< T, U > & );
+    S & operator>>( S &, pset< T, U > & );
     
 	/////////////////////////////////////////////////////////////////////////////////////////////
     template<class S, class T, template<class> class U>
-    S & operator<<(S &, const record< T, U > & );
+    S & operator<<(S &, const pset< T, U > & );
 }
 
-#include "record.hxx"
-#endif // RECORD_H__DgtvNfi7AQK9OCEXTxWJrlqLS0k2pz
+#include "pset.hxx"
+#endif // PSET_H__DgtvNfi7AQK9OCEXTxWJrlqLS0k2pz

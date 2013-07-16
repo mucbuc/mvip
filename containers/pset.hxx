@@ -2,14 +2,14 @@ namespace om636
 {
     
 #pragma mark -
-#pragma mark record
+#pragma mark pset
 #pragma mark -
     
 	/////////////////////////////////////////////////////////////////////////////////////////////
-	// record< T, U >
+	// pset< T, U >
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, template<class> class U>
-	void record< T, U >::append( node * n )
+	void pset< T, U >::append( node * n )
     {
         std::lock_guard< mutex_type > lock( m_mutex );
         n->next() = std::move( m_head );
@@ -18,7 +18,7 @@ namespace om636
     
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, template<class> class U> 
-	void record< T, U >::append( const value_type & v )
+	void pset< T, U >::append( const value_type & v )
 	{
 		append( new single_node( v ) );
     }
@@ -26,14 +26,14 @@ namespace om636
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, template<class> class U> 
 	template<class I> 
-	void record< T, U >::append( I i, I e )
+	void pset< T, U >::append( I i, I e )
 	{
         append( new block_node( i, e ) );
 	}
 		
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, template<class> class U>
-	void record< T, U >::traverse( visitor_type visitor, std::function< void() > done ) const
+	void pset< T, U >::traverse( visitor_type visitor, std::function< void() > done ) const
 	{
 		traverse( visitor );
         done();
@@ -41,7 +41,7 @@ namespace om636
     
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, template<class> class U>
-	void record< T, U >::traverse( visitor_type visitor ) const 
+	void pset< T, U >::traverse( visitor_type visitor ) const 
 	{
 		if (m_head)
         {
@@ -56,7 +56,7 @@ namespace om636
     
   	/////////////////////////////////////////////////////////////////////////////////////////////
     template<class S, class T, template<class> class U>
-    S & operator>>( S & s, record< T, U > & record )
+    S & operator>>( S & s, pset< T, U > & pset )
     {
         typedef T value_type;
         
@@ -64,18 +64,18 @@ namespace om636
         std::vector< value_type > init;
         while (s && s >> temp)
             init.push_back( temp );
-        record.append( init.begin(), init.end() );
+        pset.append( init.begin(), init.end() );
         return s;
     }
     
 	/////////////////////////////////////////////////////////////////////////////////////////////
     template<class S, class T, template<class> class U>
-    S & operator<<( S & s, const record< T, U > & record )
+    S & operator<<( S & s, const pset< T, U > & pset )
     {
         typedef T value_type;
     
         using namespace std;
-        record.traverse( [&]( const value_type & i ) {
+        pset.traverse( [&]( const value_type & i ) {
             s << i << std::endl;
         } );
         

@@ -6,6 +6,9 @@
 
 #include <string>
 
+#ifndef _observer_test_H_098234098734535
+#define _observer_test_H_098234098734535
+
 namespace 
 {
 	
@@ -224,3 +227,5 @@ namespace
         std::cout << "observer test passed" << std::endl;
 	}
 }
+
+#endif // _observer_test_H_098234098734535
