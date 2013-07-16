@@ -48,6 +48,11 @@ namespace om636
 	template<class T>
 	T euclidian( T a, T b)
 	{
+	#if false
+		TRACK_SCOPE( __FUNCTION__ );
+		cout << "euclidian(" << a << ", " << b << ")" << endl;
+	#endif 
+		
 		using std::swap; 
 		
 		if( b > a )
