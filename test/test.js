@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var IGNORE_DIRECTORY = 'config'
   , GIT_DIRECTORY = 'config.git'
   , fs = require( 'fs' )
