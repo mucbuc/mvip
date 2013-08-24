@@ -8,10 +8,10 @@
 #ifndef QUERY_H__HNiAPBUXg5IzhQCSlO46yp3fmLWZsY
 #define QUERY_H__HNiAPBUXg5IzhQCSlO46yp3fmLWZsY
 
-#include <om636/lambda/lambda_fwd.h>
-#include <om636/lambda/batch.h>
-#include <om636/lambda/serving.h>
-#include <om636/lambda/speed.h>
+#include <om636/lib/lambda/lambda_fwd.h>
+#include <om636/lib/lambda/batch.h>
+#include <om636/lib/lambda/serving.h>
+#include <om636/lib/lambda/speed.h>
 
 namespace om636
 {

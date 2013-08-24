@@ -13,12 +13,12 @@
 #ifndef _builder_H_8900700
 #define _builder_H_8900700
 
-#include <om636/components/componentsfwd.h>
-#include <om636/components/context.h>
-#include <om636/math/mathfunctors.h>
-#include <om636/math/mathutills.h>
-#include <om636/parser/parserfwd.h>
-#include <om636/parser/token.h>
+#include <om636/lib/components/componentsfwd.h>
+#include <om636/lib/components/context.h>
+#include <om636/lib/math/mathfunctors.h>
+#include <om636/lib/math/mathutills.h>
+#include <om636/lib/parser/parserfwd.h>
+#include <om636/lib/parser/token.h>
 #include <functional>
 #include <iostream>
 #include <tuple>

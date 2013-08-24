@@ -1,14 +1,14 @@
 
-#include <om636/core/core.h>
-#include <om636/parser/parser.h>
-#include <om636/parser/token.h>
-#include <om636/components/context.h>
-#include <om636/components/subject.h>
-#include <om636/parser/parserfwd.h>
-#include <om636/parser/builder.h>
-#include <om636/parser/lexer.h>
-#include <om636/parser/policies.h>
-#include <om636/parser/token.h>
+#include <om636/lib/core/core.h>
+#include <om636/lib/parser/parser.h>
+#include <om636/lib/parser/token.h>
+#include <om636/lib/components/context.h>
+#include <om636/lib/components/subject.h>
+#include <om636/lib/parser/parserfwd.h>
+#include <om636/lib/parser/builder.h>
+#include <om636/lib/parser/lexer.h>
+#include <om636/lib/parser/policies.h>
+#include <om636/lib/parser/token.h>
 
 #include <sstream>
 

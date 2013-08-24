@@ -1,8 +1,8 @@
 #ifndef BATCH_H__EL9ysUBcPGz4Jj6oYMRAne2Vx1iFNS
 #define BATCH_H__EL9ysUBcPGz4Jj6oYMRAne2Vx1iFNS
 
-#include <om636/lambda/lambda_fwd.h>
-#include <om636/containers/pset.h>
+#include <om636/lib/lambda/lambda_fwd.h>
+#include <om636/lib/containers/pset.h>
 
 namespace om636
 {

@@ -1,9 +1,9 @@
 #ifndef SERVING_H__zZ435R9CerfksUNnSiBuYP0E1vTxJ6
 #define SERVING_H__zZ435R9CerfksUNnSiBuYP0E1vTxJ6
 
-#include <om636/components/componentsfwd.h>
-#include <om636/components/context.h>
-#include <om636/lambda/lambda_fwd.h>
+#include <om636/lib/components/componentsfwd.h>
+#include <om636/lib/components/context.h>
+#include <om636/lib/lambda/lambda_fwd.h>
 #include <vector>
 
 namespace om636

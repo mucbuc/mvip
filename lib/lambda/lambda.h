@@ -11,8 +11,8 @@
 #ifndef LAMBDA_H__sqIC9DQdhkz1nfOLYW2eiJXH4mFlwV
 #define LAMBDA_H__sqIC9DQdhkz1nfOLYW2eiJXH4mFlwV
 
-#include <om636/lambda/lambda_fwd.h>
-#include <om636/components/context.h>
+#include <om636/lib/lambda/lambda_fwd.h>
+#include <om636/lib/components/context.h>
 
 namespace om636
 {

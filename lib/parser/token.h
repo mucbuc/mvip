@@ -15,7 +15,7 @@
 #ifndef _token_H_8900700
 #define _token_H_8900700
 
-#include <om636/parser/parserfwd.h>
+#include <om636/lib/parser/parserfwd.h>
 #include <string>
 #include <sstream>
 

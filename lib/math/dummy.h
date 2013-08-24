@@ -2,10 +2,10 @@
 #ifndef _dummy_H_8900700
 	#define _dummy_H_8900700
 
-#include <om636/core/core.h>
-#include <om636/components/context.h>
-#include <om636/math/mathfwd.h>
-#include <om636/math/utills.h>
+#include <om636/lib/core/core.h>
+#include <om636/lib/components/context.h>
+#include <om636/lib/math/mathfwd.h>
+#include <om636/lib/math/utills.h>
 
 namespace om636
 {

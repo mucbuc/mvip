@@ -11,7 +11,7 @@
 #ifndef _logger_H_8900700
 	#define _logger_H_8900700
 
-#include <om636/toolbag/toolbagfwd.h>
+#include <om636/lib/toolbag/toolbagfwd.h>
 
 #include <fstream>
 #include <iostream>

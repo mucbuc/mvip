@@ -1,9 +1,9 @@
 #ifndef SPEED_H__d80j4xB7cXD3RTLtgGkH2lWAUVvFSi
 #define SPEED_H__d80j4xB7cXD3RTLtgGkH2lWAUVvFSi
 
-#include <om636/lambda/lambda_fwd.h>
-#include <om636/components/subject.h>
-#include <om636/components/observer.h>
+#include <om636/lib/lambda/lambda_fwd.h>
+#include <om636/lib/components/subject.h>
+#include <om636/lib/components/observer.h>
 
 namespace om636
 {

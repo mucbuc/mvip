@@ -1,10 +1,10 @@
-#include <om636/components/context.h>
-#include <om636/components/subject.h>
-#include <om636/core/tests.h>
-#include <om636/math/additive.h>
+#include <om636/lib/components/context.h>
+#include <om636/lib/components/subject.h>
+#include <om636/lib/core/tests.h>
+#include <om636/lib/math/additive.h>
 //#include <math/matrix.h>
-#include <om636/math/multiplicative.h>
-#include <om636/math/dummy.h>
+#include <om636/lib/math/multiplicative.h>
+#include <om636/lib/math/dummy.h>
 
 #include <iostream>
 #include <fstream>

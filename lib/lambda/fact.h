@@ -1,7 +1,7 @@
 #ifndef FACT_H__LI9K3dOVQCSmq2pPcebrA6o5f7y8jx
 #define FACT_H__LI9K3dOVQCSmq2pPcebrA6o5f7y8jx
 
-#include <om636/lambda/lambda_fwd.h>
+#include <om636/lib/lambda/lambda_fwd.h>
 
 namespace om636
 {
