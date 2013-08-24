@@ -18,19 +18,12 @@ namespace om636
         typedef typename default_subject::traits< context_type >::value_type value_type;
         
         template<class V>
-        static value_type on_init(V & i)
-        {
-            return value_type();
-        }
+        static value_type on_init(V &);
         
-        /////////////////////////////////////////////////////////////////////////////////////////////
         template<class V, class W>
-        value_type on_init(V & s, const W & init)
-        {
-            return value_type( init ); 
-        }
+        value_type on_init(V &, const W &);
         
-        virtual void clear();        
+        virtual void clear();
 	};
 	
 	template<class T>
