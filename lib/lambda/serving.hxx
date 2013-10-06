@@ -1,0 +1,33 @@
+namespace om636
+{
+#pragma mark serving_layer
+
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    // serving_layer<T>
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    template<class T>
+    void serving_layer<T>::process( const value_type & master )
+    {}
+    
+#pragma mark batch_view
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    // batch_view<T>
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    template<class T>
+    template<class U>
+    batch_view<T>::batch_view( U & context )
+    : m_detach( std::function< void() >( [&](){ context.serving().detach( this ); } ) )
+    {
+        using namespace std::placeholders;
+        context.serving().attach( this );
+        typedef typename U::serving_type serving_type;
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    template<class T>
+    batch_view<T>::~batch_view()
+    {
+        m_detach();
+    }
+}
