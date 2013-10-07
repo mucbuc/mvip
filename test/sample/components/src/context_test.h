@@ -23,7 +23,7 @@ namespace om636
     {
         typedef T context_type;
         typedef om636::default_subject::policy< T > base_type;
-        typedef typename base_type::value_type value_type;
+        typedef typename std::tuple_element< 0, typename base_type::value_type >::type value_type;
         
         template<class V>
         static value_type on_init( V & s )
@@ -42,7 +42,7 @@ namespace om636
             m_value = 7777;
         }
         
-        int m_value;
+        value_type m_value;
     };
 
     void run_context_test()
