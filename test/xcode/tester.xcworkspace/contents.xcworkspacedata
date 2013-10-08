@@ -394,15 +394,18 @@
       </Group>
    </Group>
    <FileRef
-      location = "group:containers/containers.xcodeproj">
+      location = "group:components/components.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:components/components.xcodeproj">
+      location = "group:containers/containers.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:control/control.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:math/math.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:parser/parser.xcodeproj">
    </FileRef>
 </Workspace>
