@@ -2,8 +2,8 @@
     Reference: http://www.drdobbs.com/article/print?articleId=184403745
 */
 
-#ifndef _ASSERT_H_9879879hkjh
-#define _ASSERT_H_9879879hkjh
+#ifndef ASSERT_H_9879879hkjh
+#define ASSERT_H_9879879hkjh
 
 #include <iostream>
 #include <stdexcept>
@@ -115,4 +115,4 @@
 
 #include "assert.hxx"
 
-#endif // _ASSERT_H_9879879hkjh
+#endif // ASSERT_H_9879879hkjh

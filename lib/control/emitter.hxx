@@ -4,36 +4,12 @@
 namespace om636
 {
 	/////////////////////////////////////////////////////////////////////////////////////////////
-	// emitter<T, U>::listener
-	/////////////////////////////////////////////////////////////////////////////////////////////
-	template<class T, class U> 
-	struct emitter<T, U>::listener
-	{
-    	listener( emitter & e )
-		: m_emitter( & e )
-		{}
-		
-        void detach()
-        {
-            m_emitter = 0;
-        }
-    
-		~listener()
-		{
-            if (m_emitter)
-                m_emitter->remove( this );
-        }
-	
-    private:
-		emitter * m_emitter;
-	}; 
-	
-	/////////////////////////////////////////////////////////////////////////////////////////////
 	// emitter<T>
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U> 
 	emitter<T, U>::emitter()
 	//: m_listeners()
+	: m_batches()
 	{}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,6 +31,10 @@ namespace om636
 	template<class T, class U> 
 	void emitter<T, U>::emit( event_type e )
 	{
+		auto batches = m_batches[ e ];
+		batches.first.invoke();
+		batches.second.invoke();
+		
 #if 0
         const id_map_type & range( m_listeners[ e ] );
         std::for_each( range.begin(), range.end(), [](typename id_map_type::value_type g)
@@ -90,6 +70,35 @@ namespace om636
         } ); 
 #endif 
     }
+
+
+    #if 0
+    	/////////////////////////////////////////////////////////////////////////////////////////////
+	// emitter<T, U>::listener
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	template<class T, class U> 
+	struct emitter<T, U>::listener
+	{
+    	listener( emitter & e )
+		: m_emitter( & e )
+		{}
+		
+        void detach()
+        {
+            m_emitter = 0;
+        }
+    
+		~listener()
+		{
+            if (m_emitter)
+                m_emitter->remove( this );
+        }
+	
+    private:
+		emitter * m_emitter;
+	}; 
+	
+#endif 
     
 	
 }	// om636

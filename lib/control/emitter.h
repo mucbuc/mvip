@@ -1,17 +1,5 @@
 /*
-    similar to observer but few different constraits:
- 
- 1. a listener can be detached at any moment. (this makes map a bit cumbersome because the container has to be modifiable while traversal)
- 2. no assumption can be made about the order of listeners updated 
- 3.
- 
- 
- 
- 
- 1. all attached observers must be updated (except for counter_subject)
- 2. all detached observers must not be updated
- 3. observers receive updates in the order that they where attached
- 4. an observer can be detached multiple times
+
  */
 
 #ifndef EMITTER_H__JhLAPnS3Wp842MtFlNU59YkvsoQyIR
@@ -28,23 +16,19 @@ namespace om636
 	{
         typedef T event_type;
         typedef U function_type;
-    
-        struct Listener
+
+        struct Batch
         {
-            Listener( function_type, EventEmitter & );
-            ~Listener();
-            
-            void operator()() const;
-            void operator()();
-            
-        private:
-            
-            function_type m_call;
-            EventEmitter * m_emitter;
-            
-            Listener( const Listener & ) = delete;
-            Listener & operator=(const Listener &) = delete;
+			void include( function_type );
+        	void exclude( function_type ); 
+        
+        	void invoke(); 
+
+        private: 
+
+        	std::vector< function_type > m_functions;
         };
+
         
     public:
 		
@@ -64,14 +48,38 @@ namespace om636
         
 	private:
     
+		typedef std::map< key_type, pair< Batch, Batch > > map_type; 
+    	map_type m_batches; 
+    };
+/*
+
+
 #if 0
+
+
+        struct Listener
+        {
+            Listener( function_type, EventEmitter & );
+            ~Listener();
+            
+            void operator()() const;
+            void operator()();
+            
+        private:
+            
+            function_type m_call;
+            EventEmitter * m_emitter;
+            
+            Listener( const Listener & ) = delete;
+            Listener & operator=(const Listener &) = delete;
+        };
+
+
         typedef std::map< key_type, U > id_map_type;
      	typedef std::map< event_type, id_map_type > map_type;
         typedef typename map_type::iterator iterator;
         map_type m_listeners;
 #endif 
-    };
-/*
 
 problem: 
 	each element in U needs to be paired with a keytype. key_type is currently hardcoded
