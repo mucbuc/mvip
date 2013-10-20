@@ -56,9 +56,6 @@
          <FileRef
             location = "group:stack.hxx">
          </FileRef>
-         <FileRef
-            location = "group:test.h">
-         </FileRef>
       </Group>
       <Group
          location = "group:control"
