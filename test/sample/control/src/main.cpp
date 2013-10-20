@@ -30,17 +30,15 @@ void check_destructor() {
     using namespace std;
     using namespace om636;
     typedef emitter< string, function<void()> , test_emitter_policy > emitter_type;
-    
+    typedef typename emitter_type::Listener listener_type;
     
     emitter_type e;
-    typedef typename emitter_type::Listener listener_type;
     
     {
         listener_type l( e.on( string(""), nop ));
     }
     
     assert( test_base::destructor_called );
-    
     cout << "destructor test passed" << endl;
 }
 
