@@ -1,4 +1,6 @@
 #include <cassert>
+#define ASSERT( pred ) assert( pred )
+
 #include <string>
 #include <iostream>
 
