@@ -66,7 +66,7 @@ namespace om636
         
         using typename base_type::object_type;
         
-        struct Listener : object_type
+        struct Listener : base_type::object_type
         {
             Listener( Agent & );
             Listener(const Listener &) = delete;
