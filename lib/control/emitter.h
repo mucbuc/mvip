@@ -9,6 +9,8 @@
 #include <set>
 #include <memory>
 
+#include <om636/lib/containers/queue.h>
+
 namespace om636
 {
     template<typename T>
@@ -29,30 +31,30 @@ namespace om636
         typedef T event_type;
         typedef U function_type;
         typedef V< emitter< event_type, function_type, V > > base_type;
-      //  typedef om636::queue< event_type > queue_type;
-        
+        typedef om636::queue< event_type > queue_type;
         
         struct Agent
         {
-            Agent( function_type callback )
-            : m_cancel(0)
-            , m_callback( callback )
-            {}
-            
-            void cancel() { m_cancel = 1; }
-            bool is_canceled() { return m_cancel; }
-            function_type callback() { return m_callback; }
+            Agent( function_type );
+            void cancel();
+            bool is_canceled();
+            function_type callback();
         
         private:
             bool m_cancel;
             function_type m_callback;
         };
         
-        struct Batch
-        {
-            typedef std::set< Agent * > set_type;
-            set_type m_callbacks;
-        };
+        typedef std::set< Agent * > batch_type;
+        
+        static void include( batch_type &, batch_type & );
+        static void process( batch_type & );
+        
+        typedef std::map< event_type, batch_type > map_type;
+        
+        map_type m_add_repeaters, m_add_singles, m_repeaters, m_singles;
+        queue_type m_queue;
+        bool m_traversing;
         
     public:
         using typename base_type::object_type;
@@ -75,25 +77,10 @@ namespace om636
 		Listener * on( event_type, function_type );
         Listener * once( event_type, function_type );
 
-        bool remove_all_listeners();
-        bool remove_all_listeners( event_type );
+        void remove_all_listeners();
+        void remove_all_listeners( event_type );
         
-        virtual void emit( event_type );
-      
-	private:
-        
-        void removeAllListeners();
-
-        void removeListener( Listener );
-        
-        
-       //const Batch listeners( event_type );
-        
-        Listener addListener( event_type, function_type );
-        
-        
-	//	typedef std::map< key_type, pair< Batch, Batch > > map_type;
-    //	map_type m_batches;
+        void emit( event_type );
     };
 
 }	// om636

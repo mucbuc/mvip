@@ -34,7 +34,9 @@ void check_destructor() {
     emitter_type e;
     
     {
-        std::unique_ptr< object_type > l( e.on( string(""), function_type() ) );
+        string event("e");
+        std::unique_ptr< object_type > l( e.on( event, function_type() ) );
+        e.emit( event );
     }
     
     assert( listener_type::destructor_called );
