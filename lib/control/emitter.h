@@ -9,6 +9,7 @@
 #include <set>
 #include <memory>
 #include <mutex>
+#include <algorithm>
 
 #include <om636/lib/containers/queue.h>
 

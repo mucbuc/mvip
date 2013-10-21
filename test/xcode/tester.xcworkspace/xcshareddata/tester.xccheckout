@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>36802EF5-AC40-470F-B824-A5C1ED03A5FA</string>
+	<string>DB8FFA2F-1F98-47DD-B340-3C272EFF627B</string>
 	<key>IDESourceControlProjectName</key>
 	<string>tester</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,11 +14,11 @@
 		<string>https://github.com/mucbuc/om636.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>test/tester.xcworkspace</string>
+	<string>test/xcode/tester.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>9D76C07B-6DEC-46E9-BE4E-CE8E0C6D2B5F</key>
-		<string>../..</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/mucbuc/om636.git</string>

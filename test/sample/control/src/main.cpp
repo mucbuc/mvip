@@ -97,7 +97,6 @@ void check_emit_while_emit()
 }
 
 int main() {
-    
     check_emitter();
     check_add_while_traverse();
     check_emit_while_emit();
