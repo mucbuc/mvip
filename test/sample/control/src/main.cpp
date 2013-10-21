@@ -26,7 +26,7 @@ bool test_emitter_policy<T>::test_base::destructor_called( false );
 template<typename T>
 bool test_emitter_policy<T>::test_base::processor_called( false );
 
-void check_destructor() {
+void check_emitter() {
 
     using namespace std;
     using namespace om636;
@@ -49,9 +49,34 @@ void check_destructor() {
     cout << "emitter test passed" << endl;
 }
 
+void check_add_while_traverse()
+{
+    using namespace std;
+    using namespace om636;
+    typedef function<void()> function_type;
+    typedef emitter< string, function_type , test_emitter_policy > emitter_type;
+    typedef typename emitter_type::object_type object_type;
+    typedef typename emitter_type::Listener listener_type;
+    
+    emitter_type e;
+    bool second_called( 0 );
+    string event("e");
+    std::unique_ptr< object_type > l( e.on( event, [&]() {
+        e.on( "e", [&]() {
+            second_called = 1;
+        } );
+    } ) );
+    e.emit( event );
+    
+    assert( !second_called );
+    e.emit( event );
+    assert( second_called );
+}
+
 int main() {
     
-    check_destructor();
+    check_emitter();
+    check_add_while_traverse();
     return 0;
 }
 
