@@ -73,10 +73,34 @@ void check_add_while_traverse()
     assert( second_called );
 }
 
+void check_emit_while_emit()
+{
+    using namespace std;
+    using namespace om636;
+    typedef function<void()> function_type;
+    typedef emitter< string, function_type , test_emitter_policy > emitter_type;
+    typedef typename emitter_type::object_type object_type;
+    typedef typename emitter_type::Listener listener_type;
+    
+    size_t counter(0);
+    
+    emitter_type e;
+    string event("e");
+    e.once( event, [&](){
+        ++counter;
+        e.emit( event );
+    });
+    
+    e.emit( event );
+
+    assert( counter == 1 );
+}
+
 int main() {
     
     check_emitter();
     check_add_while_traverse();
+    check_emit_while_emit();
     return 0;
 }
 

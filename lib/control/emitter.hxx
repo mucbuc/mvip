@@ -52,7 +52,6 @@ namespace om636
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U, template<class> class V>
     emitter<T, U, V>::emitter()
-    : m_traversing( 0 )
     {}
     
     /////////////////////////////////////////////////////////////////////////////////////////////
@@ -85,21 +84,20 @@ namespace om636
 	template<class T, class U, template<class> class V>
     void emitter<T, U, V>::emit( event_type e )
     {
-        // TODO: lock before check
-        if (!m_traversing)
+        std::unique_lock<mutex_type> lock( m_mutex, std::try_to_lock );
+        if (lock.owns_lock())
         {
-            // TODO: scope_guard
-            m_traversing = 1;
-            
             event_type current(e);
             do
             {
+                using std::swap;
+                
                 batch_type singles;
-                std::swap( singles, m_singles[current] );
+                swap( singles, m_singles[current] );
                 
                 batch_type repeaters;
                 batch_type & to_add( m_repeaters[current] );
-                std::swap( repeaters, to_add );
+                swap( repeaters, to_add );
                 
                 process( singles );
                 process( repeaters );
@@ -111,7 +109,6 @@ namespace om636
                 } );
             }
             while (m_queue.try_pop(current));
-            m_traversing = 0;
         }
         else
             m_queue.push( e );

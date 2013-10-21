@@ -8,6 +8,8 @@
 #include <map>
 #include <set>
 #include <memory>
+#include <mutex>
+
 #include <om636/lib/containers/queue.h>
 
 namespace om636
@@ -55,6 +57,9 @@ namespace om636
         map_type m_repeaters, m_singles;
         queue_type m_queue;
         bool m_traversing;
+        
+        typedef std::mutex mutex_type;
+        mutex_type m_mutex;
         
     public:
         
