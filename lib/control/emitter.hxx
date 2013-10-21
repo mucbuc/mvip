@@ -77,9 +77,7 @@ namespace om636
     {
         for_each( batch.begin(), batch.end(), [](Agent * a){
             if (!a->is_canceled())
-                std::cout << "process" << std::endl;
-            
-            //    a->callback()();
+                a->callback()();
         } );
     }
     
