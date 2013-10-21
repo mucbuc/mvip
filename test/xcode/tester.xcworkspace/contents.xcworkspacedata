@@ -5,6 +5,64 @@
       location = "group:../../lib"
       name = "lib">
       <Group
+         location = "group:core"
+         name = "core">
+         <FileRef
+            location = "group:assert.cpp">
+         </FileRef>
+         <FileRef
+            location = "group:assert.h">
+         </FileRef>
+         <FileRef
+            location = "group:assert.hxx">
+         </FileRef>
+         <FileRef
+            location = "group:chain.h">
+         </FileRef>
+         <FileRef
+            location = "group:chain.hxx">
+         </FileRef>
+         <FileRef
+            location = "group:constraints.h">
+         </FileRef>
+         <FileRef
+            location = "group:constraints.hxx">
+         </FileRef>
+         <FileRef
+            location = "group:core.h">
+         </FileRef>
+         <FileRef
+            location = "group:core.hxx">
+         </FileRef>
+         <FileRef
+            location = "group:corefwd.h">
+         </FileRef>
+         <FileRef
+            location = "group:persistent.h">
+         </FileRef>
+         <FileRef
+            location = "group:persistent.hxx">
+         </FileRef>
+         <FileRef
+            location = "group:tests.h">
+         </FileRef>
+         <FileRef
+            location = "group:tests.hxx">
+         </FileRef>
+         <FileRef
+            location = "group:traverse.h">
+         </FileRef>
+         <FileRef
+            location = "group:traverse.hxx">
+         </FileRef>
+         <FileRef
+            location = "group:typetraits.h">
+         </FileRef>
+         <FileRef
+            location = "group:typeutills.h">
+         </FileRef>
+      </Group>
+      <Group
          location = "group:components"
          name = "components">
          <FileRef
@@ -65,64 +123,6 @@
          </FileRef>
          <FileRef
             location = "group:emitter.hxx">
-         </FileRef>
-      </Group>
-      <Group
-         location = "group:core"
-         name = "core">
-         <FileRef
-            location = "group:assert.cpp">
-         </FileRef>
-         <FileRef
-            location = "group:assert.h">
-         </FileRef>
-         <FileRef
-            location = "group:assert.hxx">
-         </FileRef>
-         <FileRef
-            location = "group:chain.h">
-         </FileRef>
-         <FileRef
-            location = "group:chain.hxx">
-         </FileRef>
-         <FileRef
-            location = "group:constraints.h">
-         </FileRef>
-         <FileRef
-            location = "group:constraints.hxx">
-         </FileRef>
-         <FileRef
-            location = "group:core.h">
-         </FileRef>
-         <FileRef
-            location = "group:core.hxx">
-         </FileRef>
-         <FileRef
-            location = "group:corefwd.h">
-         </FileRef>
-         <FileRef
-            location = "group:persistent.h">
-         </FileRef>
-         <FileRef
-            location = "group:persistent.hxx">
-         </FileRef>
-         <FileRef
-            location = "group:tests.h">
-         </FileRef>
-         <FileRef
-            location = "group:tests.hxx">
-         </FileRef>
-         <FileRef
-            location = "group:traverse.h">
-         </FileRef>
-         <FileRef
-            location = "group:traverse.hxx">
-         </FileRef>
-         <FileRef
-            location = "group:typetraits.h">
-         </FileRef>
-         <FileRef
-            location = "group:typeutills.h">
          </FileRef>
       </Group>
       <Group

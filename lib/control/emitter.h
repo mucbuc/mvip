@@ -8,7 +8,6 @@
 #include <map>
 #include <set>
 #include <memory>
-
 #include <om636/lib/containers/queue.h>
 
 namespace om636
@@ -57,6 +56,7 @@ namespace om636
         bool m_traversing;
         
     public:
+        
         using typename base_type::object_type;
         
         struct Listener : object_type
