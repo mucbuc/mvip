@@ -7,9 +7,14 @@ namespace om636
 	// Listener
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U, template<class> class V>
+    emitter<T, U, V>::Listener::Listener( Agent & agent )
+    : m_agent( agent )
+    {}
+
+    template<class T, class U, template<class> class V>
     emitter<T, U, V>::Listener::~Listener()
     {
-        
+        m_agent.cancel();
     }
     
 	/////////////////////////////////////////////////////////////////////////////////////////////
@@ -31,9 +36,11 @@ namespace om636
     
     /////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U, template<class> class V>
-    auto emitter<T, U, V>::on( event_type, function_type ) -> Listener
+    auto emitter<T, U, V>::on( event_type, function_type f ) -> Listener *
     {
-        return Listener();
+        Agent * a( new Agent( f ) );
+        
+        return new Listener( * a );
     }
     
     /////////////////////////////////////////////////////////////////////////////////////////////
@@ -45,7 +52,7 @@ namespace om636
     
     /////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U, template<class> class V>
-    auto emitter<T, U, V>::once( event_type, function_type ) -> Listener
+    auto emitter<T, U, V>::once( event_type, function_type ) -> Listener *
     {
         return Listener();
     }
@@ -59,6 +66,7 @@ namespace om636
 	template<class T, class U, template<class> class V>
     void emitter<T, U, V>::removeAllListeners()
     {}
+/*
     
     /////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U, template<class> class V>
@@ -66,6 +74,6 @@ namespace om636
     {
         return std::vector< Listener >();
     }
-    
+  */   
 	
 }	// om636
