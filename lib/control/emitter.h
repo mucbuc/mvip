@@ -45,13 +45,14 @@ namespace om636
         };
         
         typedef std::set< Agent * > batch_type;
+        typedef std::map< event_type, batch_type > map_type;
         
         static void include( batch_type &, batch_type & );
         static void process( batch_type & );
+        static void remove_all( batch_type & );
+        static void remove_all( map_type & );
         
-        typedef std::map< event_type, batch_type > map_type;
-        
-        map_type m_add_repeaters, m_add_singles, m_repeaters, m_singles;
+        map_type m_repeaters, m_singles;
         queue_type m_queue;
         bool m_traversing;
         

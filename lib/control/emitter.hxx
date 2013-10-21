@@ -94,22 +94,21 @@ namespace om636
             event_type current(e);
             do
             {
-                batch_type & singles( m_singles[current] );
-                include( singles, m_add_singles[current] );
+                batch_type singles;
+                std::swap( singles, m_singles[current] );
                 
-                batch_type & repaters( m_repeaters[current] );
-                batch_type & to_add( m_add_repeaters[current] );
-                include( repaters, to_add );
+                batch_type repeaters;
+                batch_type & to_add( m_repeaters[current] );
+                std::swap( repeaters, to_add );
                 
                 process( singles );
-                process( repaters );
+                process( repeaters );
                 
                 // keep repeaters not canceled
-                for_each( repaters.begin(), repaters.end(), [& to_add](Agent * a) {
+                for_each( repeaters.begin(), repeaters.end(), [& to_add](Agent * a) {
                     if (!a->is_canceled())
                         to_add.insert( a );
                 } );
-                repaters.clear();
             }
             while (m_queue.try_pop(current));
             m_traversing = 0;
@@ -123,7 +122,7 @@ namespace om636
     auto emitter<T, U, V>::on( event_type e, function_type f ) -> Listener *
     {
         Agent * a( new Agent( f ) );
-        m_add_repeaters[e].insert( a );
+        m_repeaters[e].insert( a );
         return new Listener( * a );
     }
     
@@ -132,27 +131,44 @@ namespace om636
     auto emitter<T, U, V>::once( event_type e, function_type f) -> Listener *
     {
         Agent * a( new Agent( f ) );
-        m_add_singles[e].insert( a );
+        m_singles[e].insert( a );
         return new Listener( * a );
     }
     
     /////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U, template<class> class V>
-    void emitter<T, U, V>::remove_all_listeners(event_type)
-    {}
+    void emitter<T, U, V>::remove_all( batch_type & batch )
+    {
+        for_each( batch.begin(), batch.end(), [](Agent * a){
+            a->cancel();
+        } );
+        batch.clear();
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////
+	template<class T, class U, template<class> class V>
+    void emitter<T, U, V>::remove_all( map_type & m )
+    {
+        for_each( m.begin(), m.end(), [](typename map_type::value_type & v) {
+            remove_all( v.second );
+        } );
+        m.clear();
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////
+	template<class T, class U, template<class> class V>
+    void emitter<T, U, V>::remove_all_listeners(event_type e)
+    {
+        remove_all( m_singles[e] );
+        remove_all( m_repeaters[e] );
+    }
     
     /////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U, template<class> class V>
     void emitter<T, U, V>::remove_all_listeners()
-    {}
-/*
-    
-    /////////////////////////////////////////////////////////////////////////////////////////////
-	template<class T, class U, template<class> class V>
-    auto emitter<T, U, V>::listeners( event_type ) -> std::vector< Listener >
     {
-        return std::vector< Listener >();
+        remove_all( m_singles );
+        remove_all( m_repeaters );
     }
-  */   
 	
 }	// om636
