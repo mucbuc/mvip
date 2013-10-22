@@ -58,6 +58,7 @@ namespace om636
         
         static void remove_all( batch_type & );
         static void remove_all( map_type & );
+        static void rinse( batch_type &, const batch_type & );
         
         void pop_events( std::function<void()> ); 
         
@@ -67,6 +68,16 @@ namespace om636
         
         typedef std::mutex mutex_type;
         mutex_type m_mutex;
+        
+        struct process_helper
+        {
+            batch_type m_singles;
+            batch_type m_repeaters;
+            
+            process_helper( emitter &, event_type );
+            
+            virtual ~process_helper();
+        };
         
     public:
         
@@ -97,6 +108,18 @@ namespace om636
     
         template< typename W >
         void emit( event_type, W );
+        
+        template< typename W, typename X >
+        void emit( event_type, W, X );
+        
+        template< typename W, typename X, typename Y>
+        void emit( event_type, W, X, Y );
+        
+        template< typename W, typename X, typename Y, typename Z>
+        void emit( event_type, W, X, Y, Z );
+        
+        template< typename W, typename X, typename Y, typename Z, typename ZZ>
+        void emit( event_type, W, X, Y, Z, ZZ );
     };
 
 }	// om636
