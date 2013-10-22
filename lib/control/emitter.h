@@ -33,7 +33,7 @@ namespace om636
         typedef T event_type;
         typedef U function_type;
         typedef V< emitter< event_type, function_type, V > > base_type;
-        typedef om636::queue< event_type > queue_type;
+        typedef om636::queue< std::function<void()> > queue_type;
         
         struct Agent
         {
@@ -52,8 +52,14 @@ namespace om636
         
         static void include( batch_type &, batch_type & );
         static void process( batch_type & );
+        
+        template<typename W>
+        static void process( batch_type &, W );
+        
         static void remove_all( batch_type & );
         static void remove_all( map_type & );
+        
+        void pop_events( std::function<void()> ); 
         
         map_type m_repeaters, m_singles;
         queue_type m_queue;
@@ -88,6 +94,9 @@ namespace om636
         void remove_all_listeners( event_type );
         
         void emit( event_type );
+    
+        template< typename W >
+        void emit( event_type, W );
     };
 
 }	// om636

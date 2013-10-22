@@ -98,10 +98,35 @@ void check_emit_while_emit()
     assert( counter == 1 );
 }
 
+void check_emit_with_args()
+{
+    using namespace std;
+    using namespace om636;
+    typedef function<void(int)> function_type;
+    typedef emitter< string, function_type , test_emitter_policy > emitter_type;
+    typedef typename emitter_type::object_type object_type;
+    typedef typename emitter_type::Listener listener_type;
+    
+    emitter_type e;
+    bool test_passed(0);
+    string event("e");
+    
+    e.once( event, [&](int i){
+        assert( i == 99 );
+        test_passed = 1;
+    } );
+    
+    e.emit( event, 99 ); 
+    
+    assert( test_passed );
+}
+
 int main() {
+
     check_emitter();
     check_add_while_traverse();
     check_emit_while_emit();
+    check_emit_with_args();
     return 0;
 }
 
