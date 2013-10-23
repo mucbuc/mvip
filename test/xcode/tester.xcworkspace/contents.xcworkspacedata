@@ -405,4 +405,7 @@
    <FileRef
       location = "group:parser/parser.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:lambda/lambda.xcodeproj">
+   </FileRef>
 </Workspace>
