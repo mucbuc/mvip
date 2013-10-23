@@ -130,6 +130,8 @@ namespace om636
         for_each( src.begin(), src.end(), [& dst](Agent * a) {
             if (!a->is_canceled())
                 dst.insert( a );
+            else 
+                delete a;
         } );
     }
     
