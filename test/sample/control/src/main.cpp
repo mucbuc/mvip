@@ -66,9 +66,9 @@ void check_add_while_traverse()
     std::unique_ptr< object_type > m;
     
     std::unique_ptr< object_type > l( e.on( event, [&]() {
-        m = e.on( "e", [&]() {
+        m = std::unique_ptr< object_type >( e.on( "e", [&]() {
             second_called = 1;
-        } );
+        } ) );
     } ) );
     e.emit( event );
     
@@ -90,7 +90,7 @@ void check_emit_while_emit()
     
     emitter_type e;
     string event("e");
-    unique_ptr<listner_type> p( e.once( event, [&](){
+    unique_ptr<listener_type> p( e.once( event, [&](){
         ++counter;
         e.emit( event );
     } ) );
@@ -113,7 +113,7 @@ void check_emit_with_args()
     bool test_passed(0);
     string event("e");
     
-    unique_ptr<listner_type> p( e.once( event, [&](int i){
+    unique_ptr<listener_type> p( e.once( event, [&](int i){
         assert( i == 99 );
         test_passed = 1;
     } ) );
