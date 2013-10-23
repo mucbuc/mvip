@@ -17,7 +17,7 @@ namespace om636
 {
     struct query
     {
-        virtual ~query() = default;
+        virtual ~query() {}
     };
 
     template<class T>
@@ -34,7 +34,7 @@ namespace om636
         template<class U>
         query_base( U & );
         
-        virtual ~query_base() = default; 
+        virtual ~query_base() {}
         virtual void detach( void * );
     };
 }

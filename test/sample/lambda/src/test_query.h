@@ -23,7 +23,7 @@ namespace om636
 		template<class U>
 		test_query( U & );
 		
-		virtual ~test_query() = default;
+		virtual ~test_query() {}
 		
 		void on_swap( const typename base_type::real_time_base::context_type &, const typename base_type::real_time_base::context_type &);
 		
