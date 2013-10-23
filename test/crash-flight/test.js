@@ -11,8 +11,8 @@ function execute( cmd, args, cwd, done ) {
   var e = new EventEmitter()
     , p = new Processor( { cmd: cmd, args: args, cwd: cwd }, e );
   console.log( ':node test$ ' + cmd + ' ' + args.toString() + ' ' + cwd );
-  e.on( 'child_error', function() { 
-    console.log( 'error' );
+  e.on( 'child_error', function( data ) { 
+    console.log( data.toString() );
   } );
   e.on( 'read', function( data ) {
     console.log( data.toString() );
