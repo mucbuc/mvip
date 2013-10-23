@@ -65,7 +65,7 @@ void check_add_while_traverse()
     string event("e");
     std::unique_ptr< object_type > m;
     
-    std::unique_ptr< object_type > l( e.on( event, [&]() {
+    std::unique_ptr< object_type > l( e.once( event, [&]() {
         m = std::unique_ptr< object_type >( e.on( "e", [&]() {
             second_called = 1;
         } ) );
