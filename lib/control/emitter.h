@@ -49,13 +49,7 @@ namespace om636
         
         typedef std::set< Agent * > batch_type;
         typedef std::map< event_type, batch_type > map_type;
-        
-        static void include( batch_type &, batch_type & );
-        static void process( batch_type & );
-        
-        template<typename W>
-        static void process( batch_type &, W );
-        
+      
         static void remove_all( batch_type & );
         static void remove_all( map_type & );
         static void rinse( batch_type &, const batch_type & );
@@ -77,6 +71,17 @@ namespace om636
             process_helper( emitter &, event_type );
             
             virtual ~process_helper();
+
+            void process_all();
+            
+            template<typename W>
+            void process_all(W);
+
+        private:    
+            static void process( batch_type & );
+            
+            template<typename W>
+            static void process( batch_type &, W );
         };
         
     public:

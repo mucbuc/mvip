@@ -1,10 +1,8 @@
-	
-	
-	
+
 namespace om636
 {
     /////////////////////////////////////////////////////////////////////////////////////////////
-	// Agent
+	// process_helper
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U, template<class> class V>
     emitter<T, U, V>::process_helper::process_helper( emitter & e, event_type event )
@@ -21,6 +19,44 @@ namespace om636
     emitter<T, U, V>::process_helper::~process_helper()
     {}
     
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    template<class T, class U, template<class> class V>
+    void emitter<T, U, V>::process_helper::process_all()
+    {
+        process( m_singles );
+        process( m_repeaters );
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    template<class T, class U, template<class> class V>
+    template<typename W>
+    void emitter<T, U, V>::process_helper::process_all(W w)
+    {
+        process( m_singles, w );
+        process( m_repeaters, w );
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    template<class T, class U, template<class> class V>
+    void emitter<T, U, V>::process_helper::process( batch_type & batch )
+    {
+        for_each( batch.begin(), batch.end(), [](Agent * a){
+            if (!a->is_canceled())
+                a->callback()();
+        } );
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    template<class T, class U, template<class> class V>
+    template<class W>
+    void emitter<T, U, V>::process_helper::process( batch_type & batch, W w )
+    {
+        for_each( batch.begin(), batch.end(), [&](Agent * a){
+            if (!a->is_canceled())
+                a->callback()(w);
+        } );
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////
 	// Agent
 	/////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,38 +115,6 @@ namespace om636
     
     /////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U, template<class> class V>
-    void emitter<T, U, V>::include( batch_type & dst, batch_type & src )
-    {
-        if (!src.empty())
-        {
-            dst.insert( src.begin(), src.end() );
-            src.clear();
-        }
-    }
-    
-    /////////////////////////////////////////////////////////////////////////////////////////////
-	template<class T, class U, template<class> class V>
-    void emitter<T, U, V>::process( batch_type & batch )
-    {
-        for_each( batch.begin(), batch.end(), [](Agent * a){
-            if (!a->is_canceled())
-                a->callback()();
-        } );
-    }
-    
-    /////////////////////////////////////////////////////////////////////////////////////////////
-	template<class T, class U, template<class> class V>
-    template<class W>
-    void emitter<T, U, V>::process( batch_type & batch, W w )
-    {
-        for_each( batch.begin(), batch.end(), [&](Agent * a){
-            if (!a->is_canceled())
-                a->callback()(w);
-        } );
-    }
-    
-    /////////////////////////////////////////////////////////////////////////////////////////////
-	template<class T, class U, template<class> class V>
     void emitter<T, U, V>::pop_events( std::function<void()> f )
     {
         std::unique_lock<mutex_type> lock( m_mutex, std::try_to_lock );
@@ -135,16 +139,13 @@ namespace om636
         } );
     }
     
-    
-    
     /////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U, template<class> class V>
     void emitter<T, U, V>::emit( event_type e )
     {
         std::function< void() > p = [&]() {
             process_helper h( * this, e );
-            process( h.m_singles );
-            process( h.m_repeaters );
+            h.process_all();
             rinse( m_repeaters[e], h.m_repeaters );
         };
         
@@ -158,15 +159,13 @@ namespace om636
     {
         std::function< void() > p = [&]() {
             process_helper h( * this, e );
-            process( h.m_singles, w );
-            process( h.m_repeaters, w );
+            h.process_all( w );
             rinse( m_repeaters[e], h.m_repeaters );
         };
         
         pop_events( p );
     }
-    
-    
+        
     /////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U, template<class> class V>
     template< typename W, typename X >
@@ -174,8 +173,7 @@ namespace om636
     {
         std::function< void() > p = [&]() {
             process_helper h( * this, e );
-            process( h.m_singles, w, x );
-            process( h.m_repeaters, w, x );
+            h.process_all( w, x );
             rinse( m_repeaters[e], h.m_repeaters );
         };
         
@@ -189,8 +187,7 @@ namespace om636
     {
         std::function< void() > p = [&]() {
             process_helper h( * this, e );
-            process( h.m_singles, w, x, y );
-            process( h.m_repeaters, w, x, y );
+            h.process_all( w, x, y );
             rinse( m_repeaters[e], h.m_repeaters );
         };
         
@@ -204,8 +201,7 @@ namespace om636
     {
         std::function< void() > p = [&]() {
             process_helper h( * this, e );
-            process( h.m_singles, w, x, y, z );
-            process( h.m_repeaters, w, x, y, z );
+            h.process_all( w, x, y, z );
             rinse( m_repeaters[e], h.m_repeaters );
         };
         
@@ -219,8 +215,7 @@ namespace om636
     {
         std::function< void() > p = [&]() {
             process_helper h( * this, e );
-            process( h.m_singles, w, x, y, z, zz );
-            process( h.m_repeaters, w, x, y, z, zz );
+            h.process_all( w, x, y, z, zz );
             rinse( m_repeaters[e], h.m_repeaters );
         };
         
