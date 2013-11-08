@@ -116,9 +116,7 @@ void check_emit_with_args()
     unique_ptr<listener_type> p( e.once( event, [&](int i){
         assert( i == 99 );
         test_passed = 1;
-    } ) );
-    
-    e.emit( event, 99 ); 
+mevent, 99 );
     
     assert( test_passed );
 }
