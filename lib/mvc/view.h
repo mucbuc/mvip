@@ -8,7 +8,7 @@ protected:
 
 	typedef T controller_type;
 
-	virtual controller_type & controller() = 0;
+	//virtual controller_type & controller() = 0;
 
 public: 
 	virtual ~view() = default;

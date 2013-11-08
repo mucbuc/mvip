@@ -20,7 +20,7 @@ namespace om636
     {
         struct object_base
         {
-            virtual ~object_base() = 0;
+            virtual ~object_base() = default;
         };
         
         typedef object_base object_type;

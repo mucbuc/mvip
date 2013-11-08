@@ -25,8 +25,8 @@ protected:
 public: 
 	virtual ~controller() = default;
 
-	virtual void attach( const view_type & ) = 0; 
-	virtual void detach( const view_type & ) = 0;
+	// virtual void attach( const view_type & ) = 0; 
+	// virtual void detach( const view_type & ) = 0;
 };
 
 #include "controller.hxx"
