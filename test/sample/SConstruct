@@ -1,1 +1,5 @@
-SConscript( 'mvc/src/SConscript', variant_dir='mvc/build_debug', duplicate = 0 )
+
+build_dir = 'mvc/build_debug'
+
+SConscript( 'mvc/src/SConscript', variant_dir=build_dir, duplicate = 0 )
+Clean( '.', build_dir )
