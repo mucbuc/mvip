@@ -1,0 +1,1 @@
+SConscript( 'mvc/src/SConscript', variant_dir='mvc/build_debug', duplicate = 0 )
