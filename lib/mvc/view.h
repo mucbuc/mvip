@@ -1,6 +1,9 @@
 #ifndef VIEW_H__7vZN2VmaLsjrQHkXpwUi540BGoltb8
 #define VIEW_H__7vZN2VmaLsjrQHkXpwUi540BGoltb8
 
+#include <vector>
+#include <memory>
+
 template<typename T> 
 class view
 {
@@ -26,7 +29,10 @@ struct basic_view : view< T >
 	virtual ~basic_view() = default;
 
 protected:
-	std::vector< object_type * > m_listeners; 
+    
+    typedef std::vector< std::shared_ptr< object_type > > listeners_type;
+    typedef typename listeners_type::value_type listener_type;
+    listeners_type m_listeners;
 };
 
 #include "view.hxx"

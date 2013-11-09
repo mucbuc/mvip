@@ -391,6 +391,9 @@
       </Group>
    </Group>
    <FileRef
+      location = "group:mvc/mvc.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:components/components.xcodeproj">
    </FileRef>
    <FileRef
