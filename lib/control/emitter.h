@@ -2,7 +2,7 @@
 
  */
 
-#ifndef emitter_H__JhLAPnS3Wp842MtFlNU59YkvsoQyIR
+#ifndef EMITTER_H__JhLAPnS3Wp842MtFlNU59YkvsoQyIR
 #define EMITTER_H__JhLAPnS3Wp842MtFlNU59YkvsoQyIR
 
 #include <map>
@@ -130,4 +130,4 @@ namespace om636
 }	// om636
 
 #include "emitter.hxx"
-#endif // __EMITTER_H__JhLAPnS3Wp842MtFlNU59YkvsoQyIR
+#endif // EMITTER_H__JhLAPnS3Wp842MtFlNU59YkvsoQyIR
