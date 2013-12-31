@@ -29,14 +29,16 @@ struct view_impl : basic_view< T >
 	~view_impl() = default;
 };
 
-int main() 
+int main()
 {	
 	typedef emit_controller< int > controller_type;
 	typedef view< controller_type > view_type;
-
+    
+    
 	controller_type impl;
 	view_impl< controller_type > v( impl );
 	impl.emit( 4 );
 
 	return 0;
 }
+
