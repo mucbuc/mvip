@@ -18,7 +18,7 @@
 #ifndef _lexer_H_8900700
 #define _lexer_H_8900700
 
-#include <om636/lib/parser/parserfwd.h>
+#include <om636/src/parser/parserfwd.h>
 
 namespace om636
 {

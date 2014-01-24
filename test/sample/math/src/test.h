@@ -1,8 +1,8 @@
-#include <om636/lib/components/context.h>
-#include <om636/lib/components/subject.h>
-#include <om636/lib/core/tests.h>
-#include <om636/lib/math/additive.h>
-#include <om636/lib/math/multiplicative.h>
+#include <om636/src/components/context.h>
+#include <om636/src/components/subject.h>
+#include <om636/src/core/tests.h>
+#include <om636/src/math/additive.h>
+#include <om636/src/math/multiplicative.h>
 
 #include <iostream>
 #include <fstream>

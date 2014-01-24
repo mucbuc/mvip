@@ -1,8 +1,8 @@
 #include <iostream>
-#include <om636/lib/core/core.h>
-#include <om636/lib/components/context.h>
-#include <om636/lib/components/observer.h>
-#include <om636/lib/components/subject.h>
+#include <om636/src/core/core.h>
+#include <om636/src/components/context.h>
+#include <om636/src/components/observer.h>
+#include <om636/src/components/subject.h>
 
 #include <string>
 

@@ -18,11 +18,11 @@
 #ifndef _parser_H_8900700
 	#define _parser_H_8900700
 
-#include <om636/lib/components/context.h>
+#include <om636/src/components/context.h>
 
-#include <om636/lib/components/componentsfwd.h>
-#include <om636/lib/parser/parserfwd.h>
-#include <om636/lib/parser/lexer.h>
+#include <om636/src/components/componentsfwd.h>
+#include <om636/src/parser/parserfwd.h>
+#include <om636/src/parser/lexer.h>
 
 #include <functional>
 

@@ -1,4 +1,4 @@
-#include <om636/lib/core/assert.h>
+#include <om636/src/core/assert.h>
 
 int main( int argc, char * argv[] )
 {

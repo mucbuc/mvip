@@ -4,27 +4,27 @@ Copyright (c) 2013 by Mark Busenitz
 www.github.com/mucbuc
 */
 
-#ifndef multiplicative_H_8900700
-#define multiplicative_H_8900700
+#ifndef additive_H_8900700
+#define additive_H_8900700
 
-#include <om636/lib/components/context.h>
-#include <om636/lib/create/singleton.h>
-#include <om636/lib/math/observer.h>
-#include <om636/lib/math/utills.h>
+#include <om636/src/components/context.h>
+#include <om636/src/create/singleton.h>
+#include <om636/src/math/observer.h>
+#include <tuple>
 
 namespace om636
 {
-	namespace multiplicative
-	{
+    namespace additive
+    {
         template<class T>
         struct policy
         : public math::observer< T >
         {
             typedef T context_type;
             typedef math::observer<context_type> observer_type;
-            typedef decltype( tuple_cat( typename default_subject::traits<context_type>::value_type(), std::tuple< observer_type * >(0) ) ) value_type;
-            typedef typename std::tuple_element<0, value_type>::type numerator_type;
-            typedef typename std::tuple_element<1, value_type>::type denumerator_type;
+            typedef decltype( std::tuple_cat( typename default_subject::traits<context_type>::value_type(), std::tuple< observer_type * >(0) ) ) value_type;
+            typedef typename std::tuple_element<0, value_type>::type positive_type;
+            typedef typename std::tuple_element<1, value_type>::type negative_type;
             
             template<class V>
             static value_type on_init(V &);
@@ -35,68 +35,39 @@ namespace om636
         	template<class V>
             static V to_value(const context_type &);
             
-            static numerator_type & num_ref(context_type &);
-            static const numerator_type & num_ref(const context_type &);
-            static denumerator_type & den_ref(context_type &);
-            static const denumerator_type & den_ref(const context_type &);
+            static positive_type & pos_ref(context_type &);
+            static const positive_type & pos_ref(const context_type &);
+            static negative_type & neg_ref(context_type &);
+            static const negative_type & neg_ref(const context_type &);
             static observer_type * & state(context_type &);
             static observer_type * state(const context_type &);
-            
+                        
             static observer_type * evaluate(context_type &);
             static observer_type * evaluate(const context_type &);
             
-            static observer_type * not_factored();
-            static observer_type * unit();
-            static observer_type * factored();
+            static observer_type * unknown();
+            static observer_type * zero();
+            static observer_type * positive();
+            static observer_type * negative();
         };
-
+        
         namespace Private
         {
             
-            // not_factored
+            // unknown_state
             template<class T>
-            struct not_factored_state
+            struct unknown_state
             : public math::value_observer< typename T::policy_type >
             {
                 // types
                 typedef T context_type;
                 typedef math::value_observer< typename T::policy_type > subject_policy;
-                
+                using subject_policy::unknown;
+                using subject_policy::zero;
+                using subject_policy::negative;
                 using subject_policy::evaluate;
-                using subject_policy::num_ref;
-                using subject_policy::den_ref;
-                using subject_policy::state;
-                
-                
-                // comparisons
-                bool on_equal(const context_type &, const context_type &) const;
-                int on_cmp(const context_type &, const context_type &) const;
-                int on_sign(const context_type &) const;
-                
-                // modifiers
-                void on_add(context_type &, const context_type &) const;
-                void on_subtract(context_type &, const context_type &) const;
-                void on_mult(context_type &, const context_type &) const;
-                void on_divide(context_type &, const context_type &) const;
-                void on_remainder(context_type &, const context_type &) const;
-                void on_inc(context_type &) const;
-                void on_dec(context_type &) const;
-                void on_invert(context_type &) const;
-            };
-            
-            // m_unit
-            template<class T>
-            struct unit_state
-            : public math::value_observer< typename T::policy_type >
-            {
-                // types
-                typedef T context_type;
-                typedef math::value_observer< typename T::policy_type > subject_policy;
-                
-                using subject_policy::not_factored;
-                using subject_policy::evaluate;
-                using subject_policy::num_ref;
-                using subject_policy::den_ref;
+                using subject_policy::pos_ref;
+                using subject_policy::neg_ref;
                 using subject_policy::state;
                 
                 // comparisons
@@ -115,20 +86,23 @@ namespace om636
                 void on_invert(context_type &) const;
             };
             
-            // factored
+            // zero_state
             template<class T>
-            struct factored_state
+            struct zero_state
             : public math::value_observer< typename T::policy_type >
             {
                 // types
                 typedef T context_type;
                 typedef math::value_observer< typename T::policy_type > subject_policy;
-                
-                using subject_policy::not_factored;
-                using subject_policy::num_ref;
-                using subject_policy::den_ref;
-                using subject_policy::state;
+                using subject_policy::unknown;
+                using subject_policy::zero;
+                using subject_policy::positive;
+                using subject_policy::negative;
                 using subject_policy::evaluate;
+                using subject_policy::pos_ref;
+                using subject_policy::neg_ref;
+                using subject_policy::on_swap;
+                using subject_policy::state;
                 
                 // comparisons
                 bool on_equal(const context_type &, const context_type &) const;
@@ -145,12 +119,78 @@ namespace om636
                 void on_dec(context_type &) const;
                 void on_invert(context_type &) const;
             };
-
-        }   // Private 
-	}	// multiplicative
-	
+            
+            // positive_state
+            template<class T>
+            struct positive_state
+            : public math::value_observer< typename T::policy_type >
+            {
+                // types
+                typedef T context_type;
+                typedef math::value_observer< typename T::policy_type > subject_policy;
+                using subject_policy::unknown;
+                using subject_policy::zero;
+                using subject_policy::negative;
+                using subject_policy::evaluate;
+                using subject_policy::pos_ref;
+                using subject_policy::neg_ref;
+                using subject_policy::state;
+                
+                // comparisons
+                bool on_equal(const context_type &, const context_type &) const;
+                int on_cmp(const context_type &, const context_type &) const;
+                int on_sign(const context_type &) const;
+                
+                // modifiers
+                void on_add(context_type &, const context_type &) const;
+                void on_subtract(context_type &, const context_type &) const;
+                void on_mult(context_type &, const context_type &) const;
+                void on_divide(context_type &, const context_type &) const;
+                void on_remainder(context_type &, const context_type &) const;
+                void on_inc(context_type &) const;
+                void on_dec(context_type &) const;
+                void on_invert(context_type &) const;
+            };
+            
+            // negative_state
+            template<class T>
+            struct negative_state
+            : public math::value_observer< typename T::policy_type >
+            {
+                // types
+                typedef T context_type;
+                typedef math::value_observer< typename T::policy_type > subject_policy;
+                using subject_policy::unknown;
+                using subject_policy::zero;
+                using subject_policy::positive;
+                using subject_policy::negative;
+                using subject_policy::evaluate;
+                using subject_policy::pos_ref;
+                using subject_policy::neg_ref;
+                using subject_policy::state;
+                
+                // comparisons
+                bool on_equal(const context_type &, const context_type &) const;
+                int on_cmp(const context_type &, const context_type &) const;
+                int on_sign(const context_type &) const;
+                
+                // modifiers
+                void on_add(context_type &, const context_type &) const;
+                void on_subtract(context_type &, const context_type &) const;
+                void on_mult(context_type &, const context_type &) const;
+                void on_divide(context_type &, const context_type &) const;
+                void on_remainder(context_type &, const context_type &) const;
+                void on_inc(context_type &) const;
+                void on_dec(context_type &) const;
+                void on_invert(context_type &) const;
+            };
+        
+        } // Private
+            
+    } // additive
+    
 }   // om636
+        
+#include "additive.hxx"
 
-#include "multiplicative.hxx"
-
-#endif // multiplicative_H_8900700
+#endif // additive_H_8900700	

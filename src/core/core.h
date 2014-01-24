@@ -33,6 +33,6 @@ namespace om636
      
 }	// om636
 
-#include <om636/lib/core/core.hxx>
+#include <om636/src/core/core.hxx>
 
 #endif // __CORE_H__INCLUDE_GUARD__LJDFD88989898989
