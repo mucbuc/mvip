@@ -1,10 +1,10 @@
 
 #include <om636/src/core/core.h>
-#include <om636/src/parser/parser.h>
-#include <om636/src/parser/token.h>
 #include <om636/src/components/context.h>
 #include <om636/src/components/subject.h>
 #include <om636/src/parser/parserfwd.h>
+#include <om636/src/parser/parser.h>
+#include <om636/src/parser/token.h>
 #include <om636/src/parser/builder.h>
 #include <om636/src/parser/lexer.h>
 #include <om636/src/parser/policies.h>
@@ -48,7 +48,7 @@ namespace
         typedef float number_type;
         builder< number_type > b;
         b.build_first_operator( i, e );
-        b.build(  i, e );
+        b.build( i, e );
         return b.result();
     }
 
