@@ -1,12 +1,8 @@
-#include <cassert>
-#define ASSERT( pred ) assert( pred )
-
-
-#include "test.h"
+#include <iostream>
 
 int main(int argc, const char * argv[])
 {
-    run_calculator_test<void>();
+    std::cout << "*** error: no test implemented for parser" << std::endl;
     
     return 0;
 }
