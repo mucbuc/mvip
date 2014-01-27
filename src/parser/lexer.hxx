@@ -24,12 +24,12 @@ namespace om636
 		
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U>
-	const typename lexer<T, U>::token_type & lexer<T, U>::current() const
+	auto lexer<T, U>::current() const -> const token_type & 
 	{	return m_token;	}
 		
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U>
-	const typename lexer<T, U>::token_type & lexer<T, U>::next()
+	auto lexer<T, U>::next() -> const token_type &
 	{
         m_count++;
         return m_token = token_type(m_stream, m_front);

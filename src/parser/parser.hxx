@@ -12,27 +12,27 @@ namespace om636
 
 	////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U>
-	typename parser<T, U>::context_type & parser<T, U>::context() 
+	auto parser<T, U>::context() -> context_type &
 	{	return m_context; }
 			
 	////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U>
-	const typename parser<T, U>::context_type & parser<T, U>::context() const 
+	auto parser<T, U>::context() const -> const context_type & 
 	{	return m_context; }
 
 	////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U>
-	typename parser<T, U>::lexer_type & parser<T, U>::lexer() 
+	auto parser<T, U>::lexer() -> lexer_type & 
 	{	return m_lexer; } 
 			
 	////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U>
-	const typename parser<T, U>::lexer_type & parser<T, U>::lexer() const 
+	auto parser<T, U>::lexer() const -> const lexer_type &  
 	{	return m_lexer; } 
 
 	////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class U>
-	typename parser<T, U>::context_type & parser<T, U>::interpret()
+	auto parser<T, U>::interpret() -> context_type & 
 	{
 		auto t( m_lexer.current() );
         while(t)
