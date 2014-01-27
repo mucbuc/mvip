@@ -5,7 +5,6 @@
 #include <om636/src/parser/parserfwd.h>
 #include <om636/src/parser/parser.h>
 #include <om636/src/parser/token.h>
-#include <om636/src/parser/builder.h>
 #include <om636/src/parser/lexer.h>
 #include <om636/src/parser/policies.h>
 #include <om636/src/parser/token.h>
@@ -45,11 +44,14 @@ namespace
         auto i( context_type::tokens( _context ).begin() );
         auto e( context_type::tokens( _context ).end() );
         
+    #if 0
+        #include <om636/src/parser/builder.h>
         typedef float number_type;
         builder< number_type > b;
         b.build_first_operator( i, e );
         b.build( i, e );
         return b.result();
+    #endif 
     }
 
     template<class T>
