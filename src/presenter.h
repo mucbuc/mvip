@@ -19,6 +19,8 @@ namespace om636
 			typedef safe_subject< basic_subject< T > > base_type;
 			using base_type::attach;
 			using base_type::detach;
+			using typename base_type::observer_type;
+			using base_type::m_observers;
 
 			virtual ~Basic_Presenter() = default;
 		};

@@ -1,14 +1,21 @@
 #ifndef VIEW_H__0qpIVawxhQjit7UC6ES3oWvKnMAJOf
 #define VIEW_H__0qpIVawxhQjit7UC6ES3oWvKnMAJOf
 
+#include <mvip/lib/om636/src/components/observer.h>
+
 namespace om636
 {
 	namespace mvip
 	{
 		template<class T>
-		struct basic_view 
+		struct Basic_View 
+		: observer< T >
 		{
-			virtual ~basic_view() = default;
+			typedef observer< T > base_type;
+			using typename base_type::context_type;
+			virtual ~Basic_View() = default;
+			void detach(void *) {}
+			//virtual void on_swap(const context_type &, const  context_type &) {}
 		};
 	}	// mvip
 }	// om636
