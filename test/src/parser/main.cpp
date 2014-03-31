@@ -1,9 +1,10 @@
 #include <iostream>
+#include "test.h"
 
 int main(int argc, const char * argv[])
 {
-    std::cout << "*** error: no test implemented for parser" << std::endl;
-    
+    checkTerminator();
+
     return 0;
 }
 

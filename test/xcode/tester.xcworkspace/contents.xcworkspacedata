@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:components/components.xcodeproj">
+      location = "group:parser/parser.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:parser/parser.xcodeproj">
+      location = "group:components/components.xcodeproj">
    </FileRef>
 </Workspace>

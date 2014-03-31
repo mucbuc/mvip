@@ -1,6 +1,0 @@
-env = Environment()
-#env.Replace(CXX = 'clang++')
-env.Append(CCFLAGS = ['-std=c++11', '-stdlib=libc++'])
-env.Append(LINKFLAGS = ['-stdlib=libc++'])
-env.Append(CPPPATH = ['../../../../../'])
-env.Program( 'crutch', ['main.cpp', '../../../../lib/core/assert.cpp'] )

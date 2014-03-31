@@ -2,5 +2,5 @@
 .sconsign.dblite
 test/components/persistent_storage.dat
 node_modules/
-test/crash-flight/config/
 build_debug/
+xcuserdata/
