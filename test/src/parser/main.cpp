@@ -3,7 +3,7 @@
 
 int main(int argc, const char * argv[])
 {
-    check_token();
+    check_token_number();
     check_terminator();
 
     return 0;
