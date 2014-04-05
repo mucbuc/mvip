@@ -75,27 +75,47 @@ namespace om636
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T>
 	template<class U>
-	token<T>::token( U & in, char & _front )
+	token<T>::token( U & in )
 	{
-		while (isspace(_front))
-			if (!in.get(_front))
+		char temp;
+		bool result( in.get(temp) );
+		ASSERT(result);	// should probably throw here
+
+		read_next( in, temp );
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	template<class T>
+	template<class U>
+	token<T>::token( U & in, char & front )
+	{
+		read_next( in, front );
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	template<class T>
+	template<class U>
+	void token<T>::read_next( U & in, char & front )
+	{
+		while (isspace(front))
+			if (!in.get(front))
 			{
 				m_type = terminator;
 				return;		
 			}
 	
 		enum { period = '.', semicolon = ';' };
-		if (isalpha(_front))
+		if (isalpha(front))
 		{
 			m_type = variable;                          // every alphabetic is a variable ??? 
 			do
-				m_name.push_back(_front);
-			while (in.get(_front) && isalpha(_front) ); // this seems arbitrary, what about the variables names including numbers
+				m_name.push_back(front);
+			while (in.get(front) && isalpha(front) ); // this seems arbitrary, what about the variables names including numbers
 		}
-		else if (isdigit(_front) || _front == period)
+		else if (isdigit(front) || front == period)
 		{	
 		#ifdef NDEBUG
-			bool _period( _front == period );
+			bool _period( front == period );
 		#endif 
 			
 			m_type = number;
@@ -103,22 +123,23 @@ namespace om636
 			do
 			{		
 			#ifdef NDEBUG	
-				ASSERT( !_period || _front != period );
-				_period = _front == period;
+				ASSERT( !_period || front != period );
+				_period = front == period;
 			#endif 	
 				
-				m_name.push_back(_front);
-				in.get(_front);
+				m_name.push_back(front);
+				in.get(front);
 			}
-			while (isdigit(_front) || _front == period);
+			while (isdigit(front) || front == period);
 		}
-		else if (_front == semicolon)
+		else if (front == semicolon)
 			m_type = terminator;
 		else
 		{ 
 			m_type = _operator;
-			m_name.push_back(_front);
-			in.get(_front);
+			m_name.push_back(front);
+			in.get(front);
 		}
 	}
+
 } // om636

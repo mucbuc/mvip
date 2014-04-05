@@ -26,7 +26,10 @@ namespace om636
 	{
 		struct tester
 		{	void operator delete(void*);	};
-	
+
+		template<class U>
+		void read_next( U & in, char & front );
+
     public:
 		
         typedef T value_type; 
@@ -34,6 +37,7 @@ namespace om636
 		
 		// resources
 		token();
+		template<class U> token( U & );
 		template<class U> token( U &, char & );
 		token( const token & );
 		token & operator=( token );
