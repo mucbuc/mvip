@@ -4,7 +4,4 @@
    <FileRef
       location = "group:components/components.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:parser/parser.xcodeproj">
-   </FileRef>
 </Workspace>
