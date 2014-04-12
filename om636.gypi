@@ -1,7 +1,8 @@
 {
 	'target_defaults': {
-		'cflags': [ '-std=c++11', '-stdlib=libc++' ],
-		'ldflags': [ '-stdlib=libc++' ],
+		'include_dirs': [
+			'.'
+		], #include_dirs
 		'sources': [ 
 			'src/core/assert.cpp', 
 			'src/core/assert.h',
@@ -21,6 +22,8 @@
 			'src/core/traverse.hxx',
 			'src/core/typetraits.h',
 			'src/core/typeutills.h',
-		] #sources
+		], #sources
+		'cflags': [ '-std=c++11', '-stdlib=libc++' ],
+		'ldflags': [ '-stdlib=libc++' ],
 	}
 }
