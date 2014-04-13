@@ -1,7 +1,2 @@
 .DS_Store
-<<<<<<< HEAD
 *.xcodeproj
-=======
-build_debug
-.sconsign.dblite
->>>>>>> fd6eec478ad79fe274aa41da40a9be661a306c3d
