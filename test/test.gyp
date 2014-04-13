@@ -4,7 +4,8 @@
 	],#inclues
 	'target_defaults': {
 		'sources': [
-			'src/main.cpp'
+			'src/main.cpp',
+			'src/debug.h',
 		], #sources
 		'include_dirs': [
 			'../../'
