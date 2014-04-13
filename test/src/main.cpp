@@ -1,11 +1,10 @@
-#include <cassert>
-#define ASSERT( arg ) assert( arg )
-
 #include <iostream>
 
 #include <mvip/src/presenter.h>
 #include <mvip/src/view.h>
 #include <mvip/lib/om636/src/components/context.h>
+
+#include "debug.h"
 
 template<class T>
 struct Test_View
@@ -16,7 +15,9 @@ struct Test_View
 	virtual ~Test_View() = default;
 	Test_View()  {}
 	void on_swap( const context_type & c, const context_type & )
-	{}
+	{
+		std::cout << "on_swap" << std::endl;
+	}
 };
 
 template<class T> 
@@ -33,12 +34,11 @@ struct Test_Presenter
 
 	virtual ~Test_Presenter() 
 	{
-		assert( m_passed );
+		ASSERT( m_passed );
 	}
 
 	void test() 
-	{
-	}
+	{}
 
 	void pass() const
 	{
@@ -53,8 +53,8 @@ private:
 int main( int argc, char * argv[] )
 {
 	using namespace std;
-	using namespace om636; 
-	using namespace om636::mvip; 
+	using namespace om636;
+	using namespace om636::mvip;
 
 	typedef Test_Presenter< context< int > > presenter_type; 
 	presenter_type p;
@@ -62,7 +62,6 @@ int main( int argc, char * argv[] )
 	typedef Test_View< context< int > > view_type; 
 	view_type v;
 	p.attach( & v );
-
 	p.test();
 
 	return 0;
