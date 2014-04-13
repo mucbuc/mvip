@@ -1,11 +1,10 @@
-#include <cassert>
-#define ASSERT( arg ) assert( arg )
-
 #include <iostream>
 
 #include <mvip/src/presenter.h>
 #include <mvip/src/view.h>
 #include <mvip/lib/om636/src/components/context.h>
+
+#include "debug.h"
 
 template<class T>
 struct Test_View
@@ -33,7 +32,7 @@ struct Test_Presenter
 
 	virtual ~Test_Presenter() 
 	{
-		assert( m_passed );
+		ASSERT( m_passed );
 	}
 
 	void test() 
