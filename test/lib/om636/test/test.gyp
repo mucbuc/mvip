@@ -1,12 +1,10 @@
 {
 	'includes':[
-		'../mvip.gypi',
-		'lib/om636/om636.gypi',
+		'../om636.gypi'
 	],#inclues
 	'target_defaults': {
 		'sources': [
-			'src/main.cpp',
-			'src/debug.h',
+			'src/core/main.cpp'
 		], #sources
 		'include_dirs': [
 			'../../'
