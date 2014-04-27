@@ -1,3 +1,13 @@
+/*
+
+objective: 
+
+-respond to model changes 
+-able to modify model via controller
+
+*/ 
+
+
 #ifndef VIEW_H__0qpIVawxhQjit7UC6ES3oWvKnMAJOf
 #define VIEW_H__0qpIVawxhQjit7UC6ES3oWvKnMAJOf
 
