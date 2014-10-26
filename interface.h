@@ -41,11 +41,11 @@ TODO:
 #ifndef CONTEXT_H__INCLUDE_GUARD__45435435
 #define CONTEXT_H__INCLUDE_GUARD__45435435
 
-#include <context/lib/traverse/interface.h>
-
 #include <tuple>
 #include <type_traits>
 #include <iostream>
+
+#include <lib/traverse/interface.h>
 
 namespace om636
 {
