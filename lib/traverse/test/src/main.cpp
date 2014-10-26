@@ -2,7 +2,7 @@
 #include <tuple>
 #include <string>
 
-#include <traverse/interface.h>
+#include <../../interface.h>
 
 #include "test.h"
 
