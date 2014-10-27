@@ -206,6 +206,6 @@ namespace om636
 
 }    // om636
 
-#include "interface.hxx"
+#include "context.hxx"
 
 #endif // __CONTEXT_H__INCLUDE_GUARD__45435435

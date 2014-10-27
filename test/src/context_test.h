@@ -13,7 +13,7 @@ to_do:
     - test I/O operators
 */
 
-#include <../../interface.h>
+#include <context.h>
 
 namespace om636
 {
