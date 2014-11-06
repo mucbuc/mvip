@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
 
-#include <context.h>
-#include <observer.h>
-#include <subject.h>
+#include <lib/context/context.h>
+#include <lib/context/observer.h>
+#include <lib/context/subject.h>
 
 #ifndef _observer_test_H_098234098734535
 #define _observer_test_H_098234098734535
