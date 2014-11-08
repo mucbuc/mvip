@@ -1,7 +1,4 @@
 {
-	'includes': [
-		'lib/traverse/def/base.gypi',
-	],
 	'target_defaults': {
 		'sources': [
 			'../context.h',

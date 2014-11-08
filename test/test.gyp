@@ -1,5 +1,7 @@
 {
 	'includes':[
+		'lib/context/def/base.gypi',
+		'lib/traverse/def/base.gypi',
 		'plank/def/mac-targets.gypi',
 		'plank/def/cpp11.gypi'
 	],#inclues
