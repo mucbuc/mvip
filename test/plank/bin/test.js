@@ -19,6 +19,7 @@ program
 	.version( '0.0.0' )
 	.option( '-p, --path [path]', 'test path' )
 	.option( '-o, --output [path]', 'build output' )
+	.option( '-g, --gcc', 'use gcc compiler' )
 	.parse( process.argv );
 
 if (!program.path) {
@@ -36,6 +37,8 @@ else {
 }
 
 attachLogic( emitter );
+
+console.log( program.output );
 
 emitter.emit( 'traverse', program.path );
 
@@ -129,18 +132,28 @@ function attachLogic(emitter) {
 
 	function generate( defFile, defDir, cb ) {
 
-		var buildDir = program.output;
+		var buildDir = program.output
+		  , gcc = program.gcc || defFile.search( /gcc/ ) != -1;
 
 		makePathIfNone(buildDir, function() {
 
+			var args = [
+					'--depth=' + (gcc ? './' : '.'),
+					'--generator-output=' + buildDir,
+					defFile
+				];
+
+			if (gcc) {
+				args.push( '--format=make' );
+			}
+
+			console.log( args );
+
 			cp.spawn( 
 				'gyp', 
-				[
-					defFile,
-					'--depth==0',
-					'--generator-output=' + buildDir
-				], {
-					stdio: 'inherit'
+				args, {
+					stdio: 'inherit',
+					cwd: defDir
 				})
 			.on( 'close', function( code ) {
 				cb( code, buildDir );
@@ -159,16 +172,39 @@ function attachLogic(emitter) {
 	}
 
 	function build( defFile, buildDir, cb ) {
+		var gcc = program.gcc || defFile.search( /gcc/ ) != -1;
+
 		readTargetName( defFile, program.path, function( targetName ) { 
-			cp.spawn( 
-				'xcodebuild', 
-				[
+			
+			console.log( buildDir );
+			var child; 
+			if (gcc) {
+				child = cp.spawn(
+					'make',
+					[ '-j'],
+					{
+						stdio: 'inherit',
+						cwd: buildDir
+					}); 
+			}
+			else {
+
+				var args = [
 					"-project",
 					path.join( buildDir, targetName + '.xcodeproj' )
-				], {
-					stdio: 'inherit'
-				} )
-			.on( 'close', function( code ) {
+				];
+
+				console.log( args, buildDir ); 
+
+				child = cp.spawn( 
+					'xcodebuild', 
+					args, {
+						cwd: buildDir,
+						stdio: 'inherit'
+					} ); 
+			}
+
+			child.on( 'close', function( code ) {
 				cb( code, targetName, buildDir ); 
 			} );
 		} );
@@ -176,9 +212,13 @@ function attachLogic(emitter) {
 
 	function run( defFile, testDir, target, cb ) {
 		
-
-		var execPath = path.join( testDir, 'Default', target );
-
+		var execPath
+		  , gcc = program.gcc || defFile.search( /gcc/ ) != -1;
+		if (gcc) {
+			testDir = path.join( testDir, 'out' );
+		}
+		execPath = path.join( testDir, 'Default', target );
+		
 		console.log( execPath );
 		
 		cp.spawn( 
