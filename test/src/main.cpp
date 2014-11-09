@@ -2,9 +2,9 @@
 #include <tuple>
 #include <string>
 
-#include <../../interface.h>
-
 #include "test.h"
+
+#include <lib/traverse/interface.h>
 
 struct dummy 
 {
