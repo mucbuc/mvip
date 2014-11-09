@@ -17,24 +17,11 @@ assert( typeof copy === 'function' );
 
 program
 	.version( '0.0.0' )
-	.option( '-p, --path [path]', 'test path' )
-	.option( '-o, --output [path]', 'build output' )
 	.option( '-g, --gcc', 'use gcc compiler' )
 	.parse( process.argv );
 
-if (!program.path) {
-	program.path = path.join( __dirname, '../..' );
-}
-else {
-	program.path = path.join( __dirname, '../..', program.path );
-}
-
-if (!program.output) {
-	program.output = path.join( __dirname, '../..', 'build' );
-}
-else {
-	program.output = path.join( __dirname, '../..', program.output );
-}
+program.path = path.join( __dirname, '../..' );
+program.output = path.join( __dirname, '../..', 'build' );
 
 attachLogic( emitter );
 
@@ -132,18 +119,18 @@ function attachLogic(emitter) {
 
 	function generate( defFile, defDir, cb ) {
 
-		var buildDir = program.output
-		  , gcc = program.gcc || defFile.search( /gcc/ ) != -1;
+		var buildDir = program.output;
 
 		makePathIfNone(buildDir, function() {
-
+			var include = program.gcc ? 'plank/def/cpp11-gcc.gypi' : 'plank/def/cpp11.gypi';
 			var args = [
-					'--depth=' + (gcc ? './' : '.'),
+					defFile,
+					'--depth=' + (program.gcc ? './' : '.'),
 					'--generator-output=' + buildDir,
-					defFile
+					'--include=' + include	
 				];
 
-			if (gcc) {
+			if (program.gcc) {
 				args.push( '--format=make' );
 			}
 
@@ -172,13 +159,11 @@ function attachLogic(emitter) {
 	}
 
 	function build( defFile, buildDir, cb ) {
-		var gcc = program.gcc || defFile.search( /gcc/ ) != -1;
-
 		readTargetName( defFile, program.path, function( targetName ) { 
 			
 			console.log( buildDir );
 			var child; 
-			if (gcc) {
+			if (program.gcc) {
 				child = cp.spawn(
 					'make',
 					[ '-j'],
@@ -212,9 +197,8 @@ function attachLogic(emitter) {
 
 	function run( defFile, testDir, target, cb ) {
 		
-		var execPath
-		  , gcc = program.gcc || defFile.search( /gcc/ ) != -1;
-		if (gcc) {
+		var execPath;
+		if (program.gcc) {
 			testDir = path.join( testDir, 'out' );
 		}
 		execPath = path.join( testDir, 'Default', target );
