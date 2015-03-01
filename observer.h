@@ -14,19 +14,19 @@ objective:
 
 namespace om636
 {
-
     template<class T>
-	struct observer
-	{
-		// types
-		typedef T context_type;
+    struct observer
+    {
+        // types
+        typedef T context_type;
 
-		virtual ~observer();
+        virtual ~observer() = default;
         virtual void on_swap(const context_type &, const context_type &) = 0;
         virtual void detach(void *) = 0;
-	}; 
+    }; 
 
-}	// om636
+}   // om636
 
 #include "observer.hxx"
-#endif // __OBSERVER_H__cIuO6MV2doHZDmg8ijr17zB0YCelG3
+
+#endif // OBSERVER_H__cIuO6MV2doHZDmg8ijr17zB0YCelG3
