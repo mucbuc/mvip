@@ -17,25 +17,15 @@ assert( typeof copy === 'function' );
 
 program
 	.version( '0.0.0' )
-	.option( '-p, --path [path]', 'test path' )
-	.option( '-o, --output [path]', 'build output' )
+	.option( '-g, --gcc', 'use gcc compiler' )
 	.parse( process.argv );
 
-if (!program.path) {
-	program.path = path.join( __dirname, '../..' );
-}
-else {
-	program.path = path.join( __dirname, '../..', program.path );
-}
-
-if (!program.output) {
-	program.output = path.join( __dirname, '../..', 'build' );
-}
-else {
-	program.output = path.join( __dirname, '../..', program.output );
-}
+program.path = path.join( __dirname, '../..' );
+program.output = path.join( __dirname, '../..', 'build' );
 
 attachLogic( emitter );
+
+console.log( program.output );
 
 emitter.emit( 'traverse', program.path );
 
@@ -132,15 +122,25 @@ function attachLogic(emitter) {
 		var buildDir = program.output;
 
 		makePathIfNone(buildDir, function() {
+			var include = program.gcc ? 'plank/def/cpp11-gcc.gypi' : 'plank/def/cpp11.gypi';
+			var args = [
+					defFile,
+					'--depth=' + (program.gcc ? './' : '.'),
+					'--generator-output=' + buildDir,
+					'--include=' + include	
+				];
+
+			if (program.gcc) {
+				args.push( '--format=make' );
+			}
+
+			console.log( args );
 
 			cp.spawn( 
 				'gyp', 
-				[
-					defFile,
-					'--depth==0',
-					'--generator-output=' + buildDir
-				], {
-					stdio: 'inherit'
+				args, {
+					stdio: 'inherit',
+					cwd: defDir
 				})
 			.on( 'close', function( code ) {
 				cb( code, buildDir );
@@ -160,15 +160,36 @@ function attachLogic(emitter) {
 
 	function build( defFile, buildDir, cb ) {
 		readTargetName( defFile, program.path, function( targetName ) { 
-			cp.spawn( 
-				'xcodebuild', 
-				[
+			
+			console.log( buildDir );
+			var child; 
+			if (program.gcc) {
+				child = cp.spawn(
+					'make',
+					[ '-j'],
+					{
+						stdio: 'inherit',
+						cwd: buildDir
+					}); 
+			}
+			else {
+
+				var args = [
 					"-project",
 					path.join( buildDir, targetName + '.xcodeproj' )
-				], {
-					stdio: 'inherit'
-				} )
-			.on( 'close', function( code ) {
+				];
+
+				console.log( args, buildDir ); 
+
+				child = cp.spawn( 
+					'xcodebuild', 
+					args, {
+						cwd: buildDir,
+						stdio: 'inherit'
+					} ); 
+			}
+
+			child.on( 'close', function( code ) {
 				cb( code, targetName, buildDir ); 
 			} );
 		} );
@@ -176,9 +197,12 @@ function attachLogic(emitter) {
 
 	function run( defFile, testDir, target, cb ) {
 		
-
-		var execPath = path.join( testDir, 'Default', target );
-
+		var execPath;
+		if (program.gcc) {
+			testDir = path.join( testDir, 'out' );
+		}
+		execPath = path.join( testDir, 'Default', target );
+		
 		console.log( execPath );
 		
 		cp.spawn( 
