@@ -63,8 +63,7 @@ namespace om636
         a = b;
         ASSERT( a.m_value == 7777 );
         
-        // Done
-        cout << "run_context_test: passed" << std::endl;
+        FOOTER;
     }
 
 }    // om636

@@ -1,8 +1,7 @@
 #include <tuple>
 
-#include "test.h"
+#include <plank/src/test.h>
 #include "context_test.h"
-#include "observer_test.h"
 
 int main(int argc, const char * argv[])
 {
@@ -10,8 +9,6 @@ int main(int argc, const char * argv[])
     using namespace om636;
 
     run_context_test();
-	
-	run_observer_test<void>();
-	
+
 	return 0;
 }
