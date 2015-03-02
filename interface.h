@@ -38,8 +38,8 @@ TODO:
  - subject's that write to file could cause an exception in which the value probably shouldn't change
 */
 
-#ifndef CONTEXT_H__INCLUDE_GUARD__45435435
-#define CONTEXT_H__INCLUDE_GUARD__45435435
+#ifndef INTERFACE_H__INCLUDE_GUARD__45435435
+#define INTERFACE_H__INCLUDE_GUARD__45435435
 
 #include <tuple>
 #include <type_traits>
@@ -206,6 +206,6 @@ namespace om636
 
 }    // om636
 
-#include "context.hxx"
+#include "interface.hxx"
 
-#endif // __CONTEXT_H__INCLUDE_GUARD__45435435
+#endif // INTERFACE_H__INCLUDE_GUARD__45435435

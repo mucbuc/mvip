@@ -1,6 +1,6 @@
 {
 	'includes':[
-		'lib/context/def/base.gypi',
+		'lib/context/def.gypi',
 		'plank/def/mac-targets.gypi',
 		'plank/def/cpp11.gypi'
 	],#inclues
@@ -8,7 +8,8 @@
 		'target_name': 'test', 
 		'type': 'executable',
 		'sources': [
-			'src/main.cpp'
+			'src/main.cpp',
+			'src/context_test.h'
 		], #sources
 		'include_dirs': [
 			'plank/src/',
