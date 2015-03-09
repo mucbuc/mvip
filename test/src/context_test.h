@@ -25,7 +25,7 @@ namespace om636
     struct context;
 }
 
-#include <lib/context/interface.h>
+#include <lib/context/src/interface.h>
 #include <lib/context/src/default_subject.h>
 
 namespace om636
@@ -75,7 +75,7 @@ namespace om636
         // Check on_swap
         a = b;
         ASSERT( a.m_value == 7777 );
-        
+
         FOOTER;
     }
 

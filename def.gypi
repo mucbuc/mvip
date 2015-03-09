@@ -4,8 +4,8 @@
 	],
 	'target_defaults': {
 		'sources': [
-			'interface.h',
-			'interface.hxx',
+			'src/interface.h',
+			'src/interface.hxx',
 			'src/default_subject.h',
 			'src/default_subject.hxx',		
 		]
