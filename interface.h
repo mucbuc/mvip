@@ -1,8 +1,4 @@
 /*
-tramp
-Copyright (c) 2013 by Mark Busenitz
-www.github.com/mucbuc
-
 objective:
     - std::tuple traversal functions
  
