@@ -1,7 +1,6 @@
 {
 	'includes':[
-		'../traverse/def/base.gypi',
-		'../om636/om636.gypi'
+		'../traverse/def/base.gypi'
 	],
 	'target_defaults': {
 		'sources': [
