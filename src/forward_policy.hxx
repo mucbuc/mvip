@@ -45,15 +45,7 @@ namespace om636
 	template<class T>
     int forward_policy<T>::on_sign(const context_type & lhs) const
     {
-    #if 0
         return om636::sign( lhs.value_ref() ); 
-    #else
-        if (!lhs.value_ref())
-            return 0;
-        else if (lhs.value_ref() > 0)
-            return 1;
-        return -1;
-    #endif
     }
     
     // modifiers

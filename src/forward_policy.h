@@ -3,6 +3,8 @@
 	#define FORWARD_POLICY_H_GGFDH8900700
 
 #include <lib/om636/src/core/core.h>
+#include <lib/drop/interface.h>
+
 #include "default_subject.h"
 
 // #include <lib/om636/src/math/mathfwd.h>
