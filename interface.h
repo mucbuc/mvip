@@ -4,8 +4,8 @@ Copyright (c) 2013 by Mark Busenitz
 www.github.com/mucbuc
 */
 
-#ifndef UTILLS_H__OP9AqdswJS0HDKNy5lzRIhCvfFXEb3
-#define UTILLS_H__OP9AqdswJS0HDKNy5lzRIhCvfFXEb3
+#ifndef INTERFACE_H__OP9AqdswJS0HDKNy5lzRIhCvfFXEb3
+#define INTERFACE_H__OP9AqdswJS0HDKNy5lzRIhCvfFXEb3
 
 namespace om636
 { 
@@ -28,6 +28,6 @@ namespace om636
     std::pair<T, O> euclidian(T, T, O);
 }
 
-#include "utills.hxx"
+#include "interface.hxx"
 
-#endif // UTILLS_H__OP9AqdswJS0HDKNy5lzRIhCvfFXEb3
+#endif // INTERFACE_H__OP9AqdswJS0HDKNy5lzRIhCvfFXEb3
