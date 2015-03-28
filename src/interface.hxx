@@ -54,6 +54,15 @@ namespace om636
     
     /////////////////////////////////////////////////////////////////////////////////////////////
     template<class T, template<class> class U>
+    context<T, U> & context<T, U>::operator=(const value_type & _c)
+    {
+        context temp( _c );
+        swap( temp );
+        return * this;
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    template<class T, template<class> class U>
     template<class I>
     typename I::template traits< context<T, U> >::result_type context<T, U>::operator[](I i)
     {

@@ -70,6 +70,7 @@ namespace om636
         virtual ~context() = default;
         context & operator=(context);
         template<class W> context & operator=(W);
+        context & operator=(const value_type &);
         void swap(context &);
         
         // access
