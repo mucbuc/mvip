@@ -1,6 +1,6 @@
 {
 	'includes':[
-		'lib/traverse/def/base.gypi',
+		'lib/traverse/traverse.gypi',
 		'plank/def/mac-targets.gypi'
 	],#inclues
 	'target_defaults': {
