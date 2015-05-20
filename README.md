@@ -1,7 +1,7 @@
 #objective:
   * std::tuple traversal functions
  
-#dependancies:
+#dependencies:
   * std::tuple
 
 #usage:
