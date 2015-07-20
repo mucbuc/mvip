@@ -22,7 +22,7 @@ int main(int argc, const char * argv[])
 
 	tuple< int, string > t( 5, "hello" ); 
 
-	traverse::elements( t, dummy() ); 
+	traverse::elements( t, dummy{} ); 
 
 	cout << endl;
 	return 0;
