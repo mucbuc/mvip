@@ -20,7 +20,7 @@ int main(int argc, const char * argv[])
 	using namespace std;
 	using namespace om636;
 
-	tuple< int, string > t( 5, "hello" ); 
+	const tuple< int, string > t( 5, "hello" ); 
 
 	traverse::elements( t, dummy{} ); 
 
