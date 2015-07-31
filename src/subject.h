@@ -13,6 +13,8 @@ objective:
 
 #include <vector> 
 
+#include <lib/context/src/default_subject.h> 
+
 namespace om636
 {
     // no attach/detach while update
@@ -41,9 +43,11 @@ namespace om636
         template<class V>
         static V to_value(const context_type &);
 
-        typedef std::vector< observer_type * > container_type;
+    protected:
+        
+        typedef std::vector< observer_type > container_type;
         typedef typename container_type::iterator iterator;
-    
+   
         container_type & observers();
         const container_type & observers() const;
 
@@ -72,7 +76,6 @@ namespace om636
         virtual void on_swap(context_type &, context_type &);
         
     private:
-        
         bool m_locked;
     };
     
