@@ -1,10 +1,12 @@
 #include <iostream>
-
 #include <plank/src/test.h>
+#include "subject.h"
 
 int main(int argc, const char * argv[])
 {
-	ASSERT(1);
-	std::cout << "hello test cases" << std::endl;
+    using namespace om636;
+
+	run_observer_test<void>();
+	
 	return 0;
 }

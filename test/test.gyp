@@ -1,6 +1,7 @@
 {
 	'includes':[
-		'lib/empty-plank/def.gypi',
+		'lib/sense/def.gypi',
+		'lib/context/def.gypi',
 		'plank/def/mac-targets.gypi',
 		'plank/def/cpp11.gypi'
 	],#includes
@@ -9,6 +10,7 @@
 		'type': 'executable',
 		'sources': [
 			'src/main.cpp',
+			'src/subject.h'
 		], #sources
 		'include_dirs': [
 			'plank/src/',
