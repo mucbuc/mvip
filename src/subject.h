@@ -76,10 +76,6 @@ namespace om636
         virtual void on_swap(context_type &, context_type &);
         
     private:
-<<<<<<< HEAD
-=======
-        
->>>>>>> dev
         bool m_locked;
     };
     
