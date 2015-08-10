@@ -45,9 +45,9 @@ namespace om636
 
     protected:
         
-        typedef std::vector< observer_type > container_type;
+        typedef std::vector< observer_type * > container_type;
         typedef typename container_type::iterator iterator;
-   
+    
         container_type & observers();
         const container_type & observers() const;
 
@@ -76,6 +76,10 @@ namespace om636
         virtual void on_swap(context_type &, context_type &);
         
     private:
+<<<<<<< HEAD
+=======
+        
+>>>>>>> dev
         bool m_locked;
     };
     

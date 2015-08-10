@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include <lib/context/interface.h>
+#include <lib/context/src/interface.h>
 #include <lib/sense/src/subject.h>
 #include <lib/sense/src/observer/same_scope.h>
 #include <lib/sense/src/observer/dynamic.h>

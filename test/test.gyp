@@ -3,7 +3,7 @@
 		'lib/sense/def.gypi',
 		'lib/context/def.gypi',
 		'plank/def/mac-targets.gypi',
-		'plank/def/cpp11.gypi'
+		'plank/def/plank.gypi',
 	],#includes
 	'target_defaults': {
 		'target_name': 'test', 
