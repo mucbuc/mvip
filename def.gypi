@@ -1,4 +1,8 @@
-{
+{	
+	'include': [
+		'../context/def.gypi',
+		'../drop/def.gypi',
+	],
 	'target_defaults': {
 		'sources': [
 			"src/observer.h",
