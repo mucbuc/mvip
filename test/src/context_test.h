@@ -90,10 +90,12 @@ namespace om636
         using namespace std;
         using namespace om636;
         
-        typedef context< tuple< int >, default_subject::policy > number_type;
-        number_type a( 0 );
-        stringstream( "1" ) >> a;
-        ASSERT( get<0>(a.value_ref()) == 1 );
+        typedef context< tuple< int, int >, default_subject::policy > number_type;
+        number_type a( make_tuple(0, 0) );
+        stringstream tmp( "1 2" );
+        tmp >> a;
+        ASSERT( get<0>(a.value_ref()) == 1 )(get<0>(a.value_ref()));
+        ASSERT( get<1>(a.value_ref()) == 2 )(get<1>(a.value_ref()));
         FOOTER;
     }
 
