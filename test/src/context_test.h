@@ -24,6 +24,8 @@ namespace om636
     template<class T, template<class> class U = default_subject::policy>
     struct context;
 }
+#include <tuple>
+#include <sstream>
 
 #include <lib/context/src/interface.h>
 #include <lib/context/src/default_subject.h>
@@ -76,6 +78,19 @@ namespace om636
         a = b;
         ASSERT( a.m_value == 7777 );
 
+        FOOTER;
+    }
+    
+    template<class T>
+    void run_io_test()
+    {
+        using namespace std;
+        using namespace om636;
+        
+        typedef context< tuple< int >, context_test_policy > number_type;
+        number_type a( 0 );
+        //stringstream( "1" ) >> a;
+        ASSERT( a.value_ref() == 1 );
         FOOTER;
     }
 
