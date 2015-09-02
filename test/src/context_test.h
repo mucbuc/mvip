@@ -96,6 +96,12 @@ namespace om636
         tmp >> a;
         ASSERT( get<0>(a.value_ref()) == 1 )(get<0>(a.value_ref()));
         ASSERT( get<1>(a.value_ref()) == 2 )(get<1>(a.value_ref()));
+        
+        tmp.clear();
+        tmp << a;
+        
+        ASSERT( tmp.str() == "1 2" );
+        
         FOOTER;
     }
 
