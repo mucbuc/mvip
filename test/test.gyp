@@ -7,8 +7,10 @@
 		'target_name': 'test', 
 		'type': 'executable',
 		'sources': [
+			'src/base.h',
+			'src/base.hxx',
+			'src/context_test.h',
 			'src/main.cpp',
-			'src/context_test.h'
 		], #sources
 		'include_dirs': [
 			'plank/src/',
