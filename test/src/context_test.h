@@ -40,6 +40,9 @@ namespace om636
         typedef om636::default_subject::policy< T > base_type;
         typedef typename std::tuple_element< 0, typename base_type::value_type >::type value_type;
         
+        using base_type::on_read; 
+        using base_type::on_write; 
+
         template<class V>
         static value_type on_init( V & s )
         {
@@ -87,10 +90,10 @@ namespace om636
         using namespace std;
         using namespace om636;
         
-        typedef context< tuple< int >, context_test_policy > number_type;
+        typedef context< tuple< int >, default_subject::policy > number_type;
         number_type a( 0 );
-        //stringstream( "1" ) >> a;
-        ASSERT( a.value_ref() == 1 );
+        stringstream( "1" ) >> a;
+        ASSERT( get<0>(a.value_ref()) == 1 );
         FOOTER;
     }
 
