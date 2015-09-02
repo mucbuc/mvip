@@ -15,6 +15,7 @@ int main(int argc, const char * argv[])
 
     run_context_test();
 	run_math_test<void>();
+	run_io_test<void>();
 
 	return 0;
 }

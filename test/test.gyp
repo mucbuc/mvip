@@ -2,7 +2,7 @@
 	'includes':[
 		'lib/context/def.gypi',
 		'plank/def/plank.gypi',
-	],#inclues
+	],#includes
 	'target_defaults': {
 		'target_name': 'test', 
 		'type': 'executable',
