@@ -1,3 +1,6 @@
+#ifndef FWD_H_34232L4K3J24L3K2J423LPAFALF
+#define FWD_H_34232L4K3J24L3K2J423LPAFALF
+
 namespace om636
 {
     template<class>
@@ -11,6 +14,8 @@ namespace om636
     }
 
     // interface.h
-    template<class, template<class> class = default_subject::policy>
+    template<class, template<class> class>// = default_subject::policy>
     class context;
 }
+
+#endif // FWD_H_34232L4K3J24L3K2J423LPAFALF
