@@ -14,7 +14,7 @@ namespace om636
     }
 
     // interface.h
-    template<class, template<class> class>// = default_subject::policy>
+    template<class, template<class> class = default_subject::policy>
     class context;
 }
 

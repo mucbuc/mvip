@@ -13,20 +13,10 @@ to_do:
     - test I/O operators
 */
 
-
-namespace om636
-{
-    namespace default_subject
-    {
-        template<class> struct policy;
-    }
-
-    template<class T, template<class> class U = default_subject::policy>
-    struct context;
-}
 #include <tuple>
 #include <sstream>
 
+#include <lib/context/src/fwd.h>
 #include <lib/context/src/interface.h>
 #include <lib/context/src/default_subject.h>
 
