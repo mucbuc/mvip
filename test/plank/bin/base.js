@@ -25,12 +25,14 @@ function Base(program) {
 
     makePathIfNone(o.output, function() {
 
-      var include = program.gcc ? 'plank/def/cpp11-gcc.gypi' : 'plank/def/cpp11.gypi'
+      var defPath = path.join( __dirname, '../def/' )
+        , include = defPath + (program.gcc ? 'cpp11-gcc.gypi' : 'cpp11.gypi')
         , args = [
           o.defFile,
           '--depth=' + (program.gcc ? './' : '.'),
           '--generator-output=' + o.output,
-          '--include=' + include  
+          '--include=' + include,
+          '--include=' + defPath + 'plank.gypi'
         ];
 
       if (program.gcc) {
