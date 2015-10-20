@@ -1,5 +1,5 @@
 {
-	"includes":[
+	"import":[
 		"lib/context/def.json"
 	],
 	"sources": [
