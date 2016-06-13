@@ -27,6 +27,16 @@ namespace om636
     {
         observers().erase( find( observers().begin(), observers().end(), & o ) );
     }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    template<class T, template<class> class U>
+    void basic_subject<T, U>::replace(observer_type & dest, observer_type & source)
+    {
+        auto pos( find( observers().begin(), observers().end(), & dest ) );
+        if (pos != observers().end()) {
+            * pos = & source;
+        }
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////
     template<class T, template<class> class U>
@@ -42,7 +52,7 @@ namespace om636
     template<class V>
     typename basic_subject<T, U>::value_type basic_subject<T, U>::on_init(V & v)
     {
-        return value_type();
+        return value_type{};
     }
     
     /////////////////////////////////////////////////////////////////////////////////////////////
@@ -50,7 +60,7 @@ namespace om636
     template<class V, class W>
     typename basic_subject<T, U>::value_type basic_subject<T, U>::on_init(V &, const W & v)
     {
-        return value_type(v);
+        return value_type{v};
     }
     
     /////////////////////////////////////////////////////////////////////////////////////////////
@@ -58,7 +68,7 @@ namespace om636
     template<class V>
     V basic_subject<T, U>::to_value(const context_type & c)
     {
-        return V( c.value_ref() );
+        return V{ c.value_ref() };
     }
     
     /////////////////////////////////////////////////////////////////////////////////////////////
@@ -101,6 +111,15 @@ namespace om636
         if (m_locked)
             throw locked();
         base_type::detach( o );
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    template<class T>
+    void safe_subject<T>::replace(observer_type & dest, observer_type & source)
+    {
+        if (m_locked)
+            throw locked();
+        base_type::replace( dest, source );
     }
     
     /////////////////////////////////////////////////////////////////////////////////////////////

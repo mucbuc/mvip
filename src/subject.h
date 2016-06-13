@@ -31,6 +31,8 @@ namespace om636
         virtual ~basic_subject();
         void attach(observer_type &);
 		void detach(observer_type &);
+        void replace(observer_type &, observer_type &);
+        
    protected:
      
         virtual void on_swap(context_type &, context_type &);
@@ -74,6 +76,8 @@ namespace om636
         
         void attach(observer_type &);
         void detach(observer_type &);
+        void replace(observer_type &, observer_type &);
+        
         virtual void on_swap(context_type &, context_type &);
         
     private:
