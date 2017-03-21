@@ -1,6 +1,6 @@
 {
 	"includes":[
-		"lib/sense/def.json",
+		"lib/sense/def.json"
 	],
 	"sources": [
 		"src/main.cpp",
