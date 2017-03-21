@@ -1,4 +1,8 @@
-{	
+{
+	"includes": [
+		"../lib/context/def.json",
+		"../lib/drop/def.json"
+	],
 	"sources": [
 		"src/observer.h",
 		"src/subject.h",

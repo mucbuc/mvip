@@ -1,8 +1,6 @@
 {
-	"import":[
+	"includes":[
 		"lib/sense/def.json",
-		"lib/context/def.json",
-		"lib/drop/def.json"
 	],
 	"sources": [
 		"src/main.cpp",
