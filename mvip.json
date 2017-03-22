@@ -1,0 +1,10 @@
+{
+	"sources": [ 
+		"src/observer.h",
+		"src/observer.hxx",
+		"src/presenter.h",
+		"src/presenter.hxx",
+		"src/view.h",
+		"src/view.hxx"
+	]
+}
