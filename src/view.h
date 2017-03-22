@@ -11,7 +11,7 @@ objective:
 #ifndef VIEW_H__0qpIVawxhQjit7UC6ES3oWvKnMAJOf
 #define VIEW_H__0qpIVawxhQjit7UC6ES3oWvKnMAJOf
 
-#include <mvip/lib/om636/src/components/observer.h>
+#include <lib/sense/src/observer.h>
 
 namespace om636
 {
@@ -19,9 +19,9 @@ namespace om636
 	{
 		template<class T>
 		struct Basic_View 
-		: observer< T >
+		: const_observer< T >
 		{
-			typedef observer< T > base_type;
+			typedef const_observer< T > base_type;
 			using typename base_type::context_type;
 			virtual ~Basic_View() = default;
 			void detach(void *) {}

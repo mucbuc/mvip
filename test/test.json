@@ -1,0 +1,11 @@
+{
+	"import": 
+	[ 
+		"lib/mvip/mvip.json",
+		"lib/sense/def.json"
+	],
+	"sources": [
+		"src/main.cpp",
+		"src/debug.h"
+	]
+}
