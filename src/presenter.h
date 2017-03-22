@@ -12,15 +12,16 @@ namespace om636
 {
 	namespace mvip
 	{
-		template<class T> 
+		template<class T, template<class> class U>
 		struct Basic_Presenter
-		: safe_subject< basic_subject< T > > 
+		: safe_subject< basic_subject< T, U > >
 		{
-			typedef safe_subject< basic_subject< T > > base_type;
+			typedef safe_subject< basic_subject< T, U > > base_type;
 			using base_type::attach;
 			using base_type::detach;
 			using typename base_type::observer_type;
-			using base_type::m_observers;
+			using base_type::observers;
+            using typename base_type::context_type;
 
 			virtual ~Basic_Presenter() = default;
 		};

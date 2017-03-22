@@ -2,7 +2,8 @@
 
 #include <lib/mvip/src/presenter.h>
 #include <lib/mvip/src/view.h>
-#include <lib/context/interface.h>
+#include <lib/context/src/interface.h>
+#include <lib/sense/src/observer/same_scope.h>
 
 #include "debug.h"
 
@@ -12,42 +13,45 @@ struct Test_View
 {
 	typedef om636::mvip::Basic_View< T > base_type;
 	using typename base_type::context_type;
-	virtual ~Test_View() = default;
-	Test_View()  {}
+    
+    virtual ~Test_View()
+    {
+        ASSERT( m_passed );
+    }
+
+    Test_View()  {}
 	void on_swap( const context_type & c, const context_type & )
 	{
-		std::cout << "on_swap" << std::endl;
-	}
+	    m_passed = true;
+    }
+    
+private:
+    
+    mutable bool m_passed = false;
 };
 
-template<class T> 
+template<class T, template<class> class U>
 struct Test_Presenter
-: om636::mvip::Basic_Presenter< T >
+: om636::mvip::Basic_Presenter< T, U >
 {
-	typedef om636::mvip::Basic_Presenter< T > base_type;
+	typedef om636::mvip::Basic_Presenter< T, U > base_type;
 	using typename base_type::observer_type;
-	using base_type::m_observers;
+    using typename base_type::context_type;
+    using base_type::observers;
 
-	Test_Presenter() 
-	: m_passed( false )
-	{}
-
-	virtual ~Test_Presenter() 
-	{
-		ASSERT( m_passed );
-	}
+    Test_Presenter(const Test_Presenter &) = delete;
+    Test_Presenter & operator=(const Test_Presenter &) = delete;
+    
+    Test_Presenter() = default;
+    
+    virtual ~Test_Presenter() = default;
 
 	void test() 
-	{}
-
-	void pass() const
 	{
-		m_passed = true; 
-	}
+        context_type tmp;
+        base_type::on_swap( tmp, tmp );
+    }
 
-private:
-
-	mutable bool m_passed;
 };
 
 int main( int argc, char * argv[] )
@@ -56,13 +60,14 @@ int main( int argc, char * argv[] )
 	using namespace om636;
 	using namespace om636::mvip;
 
-	typedef Test_Presenter< context< int > > presenter_type; 
+    typedef context< int > context_type;
+	typedef Test_Presenter< context_type, const_observer > presenter_type;
 	presenter_type p;
 		
-	typedef Test_View< context< int > > view_type; 
+    typedef Test_View< presenter_type::context_type > view_type;
 	view_type v;
-	p.attach( & v );
-	p.test();
+    p.attach( v );
+    p.test();
 
 	return 0;
 }
