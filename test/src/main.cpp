@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include <mvip/src/presenter.h>
-#include <mvip/src/view.h>
-#include <mvip/lib/om636/src/components/context.h>
+#include <lib/mvip/src/presenter.h>
+#include <lib/mvip/src/view.h>
+#include <lib/context/interface.h>
 
 #include "debug.h"
 

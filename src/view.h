@@ -11,7 +11,7 @@ objective:
 #ifndef VIEW_H__0qpIVawxhQjit7UC6ES3oWvKnMAJOf
 #define VIEW_H__0qpIVawxhQjit7UC6ES3oWvKnMAJOf
 
-#include <mvip/lib/om636/src/components/observer.h>
+#include <sense/src/observer.h>
 
 namespace om636
 {

@@ -6,7 +6,7 @@ design:
 #ifndef PRESENTER_H__3lGF6XdngzyLbrkU7mQVA9ai5u1Tqj
 #define PRESENTER_H__3lGF6XdngzyLbrkU7mQVA9ai5u1Tqj
 
-#include <mvip/lib/om636/src/components/subject.h>
+#include <lib/sense/src/subject.h>
 
 namespace om636 
 {
